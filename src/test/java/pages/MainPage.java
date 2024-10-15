@@ -1,11 +1,9 @@
 package pages;
 
-import pages.components.Footer;
-
 import static com.codeborne.selenide.Selenide.open;
 
 public class MainPage {
-    Footer footer = new Footer();
+    FooterPage footer = new FooterPage();
 
     public MainPage openMainPage() {
         open("https://www.x5.ru/ru");

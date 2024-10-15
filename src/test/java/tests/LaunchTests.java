@@ -1,9 +1,6 @@
 package tests;
 
 import com.codeborne.selenide.Condition;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Story;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -16,15 +13,20 @@ import static com.codeborne.selenide.Selenide.$;
 import static io.qameta.allure.Allure.step;
 
 @Tag("x5test")
-@Feature("X5 web site tests")
-@Story("UI tests")
 public class LaunchTests extends TestBase {
 
     @Test
-    @DisplayName("Open and verify main page")
+    @DisplayName("Проверка импорта")
     public void checkMainPageOpen() {
-        step("Open main page", () -> {
+        step("Открыть главную страницу", () -> {
             mainPage.openMainPage();
+        });
+        step("Ввести в поиск X5 Import", () -> {
+            $(".header-search__search-btn").click();
+            $("#search-term-header").setValue("X5 Import").pressEnter();
+        });
+        step("Результат X5 Import", () -> {
+                $(".search-results__term-hint").shouldHave(text("X5 Import"));
         });
     }
 
@@ -35,61 +37,97 @@ public class LaunchTests extends TestBase {
             "Карьера"
     })
     @ParameterizedTest(name = "{index}: {0}")
+    @DisplayName("Соответствие ожидаемому")
     public void checkNavigation(String value) {
-        step("Verify 'Company' section", () -> {
-            mainPage.openMainPage();
-            $(byText(value)).click();
-            $("[aria-label='breadcrumbs']").shouldHave(Condition.text(value));
+        step("Проверка всех разделов", () -> {
+            step("Открыть главную страницу", () -> {
+                mainPage.openMainPage();
+            });
+            step("Кликнуть", () -> {
+                $(byText(value)).click();;
+            });
+            step("Проверка совпадения", () -> {
+                $("[aria-label='breadcrumbs']").shouldHave(Condition.text(value));
+            });
         });
     }
 
     @Test
-    @DisplayName("inconsistency with the expected")
+    @DisplayName("Несоответствие ожидаемому")
     public void negativeNavigationTests() {
-        mainPage.openMainPage();
-        $(byText("Партнёрам")).click();
-        $("[aria-label='breadcrumbs']").shouldHave(text("Партнерам"));
+        step("Открыть главную страницу", () -> {
+            mainPage.openMainPage();
+        });
+        step("Кликаем Партнёрам", () -> {
+            $(byText("Партнёрам")).click();
+        });
+        step("Результат Партнерам", () -> {
+            $("[aria-label='breadcrumbs']");
+            $(".hero-company__title").shouldHave(text("Партнерам"));
+        });
     }
 
     @Test
-    @DisplayName("inconsistency with the expected")
+    @DisplayName("Несоответствие ожидаемому")
     public void negativeNavigationTests1() {
-        mainPage.openMainPage();
-        $(byText("Акционерам и инвесторам")).click();
-        $("[aria-label='breadcrumbs']").shouldHave(text("Инвесторам"));
+        step("Открыть главную страницу", () -> {
+            mainPage.openMainPage();
+        });
+        step("Кликаем Акционерам и инвесторам", () -> {
+            $(byText("Акционерам и инвесторам")).click();
+        });
+        step("Результат Инвесторам", () -> {
+            $("[aria-label='breadcrumbs']");
+            $(".hero-for-investors__title").shouldHave(text("Инвесторам"));
+        });
     }
 
     @Test
-    @DisplayName("Verify address")
+    @DisplayName("Проверка адреса")
     public void verifyAddress() {
-        mainPage
-                .openMainPage()
-                .checkAddress(testData.address);
+        step("Открыть главную страницу", () -> {
+            mainPage.openMainPage();
+        });
+        step("Адрес совпадает", () -> {
+            mainPage.checkAddress(testData.address);
+        });
     }
 
     @Test
-    @DisplayName("Verify phone numbers")
+    @DisplayName("Проверка номеров телефона")
     public void verifyPhoneNumber() {
-        mainPage
-                .openMainPage()
-                .checkPhone(testData.phoneNumber_1)
-                .checkPhone(testData.phoneNumber_2);
+        step("Открыть главную страницу", () -> {
+            mainPage.openMainPage();
+        });
+        step("Номера совпадают", () -> {
+            mainPage.checkPhone(testData.phoneNumber_1)
+                    .checkPhone(testData.phoneNumber_2);
+        });
     }
 
     @Test
-    @DisplayName("Verify X5 VK")
-    @Disabled
+    @DisplayName("Проверка перехода на страницу X5 VK")
+
     public void checkX5Vk() {
-        mainPage
-                .openMainPage()
-                .checkVkPage();
+        step("Открыть главную страницу", () -> {
+            mainPage.openMainPage();
+        });
+        step("Переходим на страницу VK", () -> {
+            mainPage.checkVkPage();
+        });
+
     }
 
     @Test
-    @DisplayName("Verify X5 Dzen")
+    @DisplayName("Проверка перехода на страницу X5 Dzen")
     public void checkX5Dzen() {
-        mainPage
-                .openMainPage()
-                .checkDzen();
+        step("Открыть главную страницу", () -> {
+            mainPage.openMainPage();
+        });
+        step("Переходим на страницу Dzen", () -> {
+            mainPage.checkDzen();
+        });
+
     }
 }
+
