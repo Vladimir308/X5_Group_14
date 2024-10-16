@@ -113,7 +113,7 @@ public class LaunchTests extends TestBase {
             mainPage.openMainPage();
         });
         step("Переходим на страницу VK", () -> {
-            mainPage.checkVkPage();
+            footer.checkVK();
         });
 
     }
@@ -125,7 +125,7 @@ public class LaunchTests extends TestBase {
             mainPage.openMainPage();
         });
         step("Переходим на страницу Dzen", () -> {
-            mainPage.checkDzen();
+            footer.checkDzen();
         });
 
     }
