@@ -10,6 +10,7 @@
     - Запуск тестов из терминала
     - Запуск тестов на удаленном браузере
     - Параметры сборки
+    - Сборки
 - Визуализация
     - Сборка в Jenkins
     - Пример Allure Report
@@ -92,6 +93,19 @@ ${TASK}
 
 ****
 
+## Сборки:
+
+<a id="jenkins"></a>
+## <img alt="Jenkins" height="25" src="media/logo/Jenkins.png" width="25"/></a><a name="Сборка"></a>Сборка в [Jenkins](https://jenkins.autotests.cloud/job/X5_Group_14/)</a>
+
+<a id="Allure"></a>
+## <img alt="Allure" height="25" src="media/logo/AllureReports.png" width="25"/></a><a name="Сборка"></a>Сборка в [Allure](https://jenkins.autotests.cloud/job/X5_Group_14/19/allure/)</a>
+
+<a id="Allure TestOps"></a>
+## <img alt="Allure TestOps" height="25" src="media/logo/AllureTestOps.svg" width="25"/></a><a name="Сборка"></a>Сборка в [Allure TestOps](https://allure.autotests.cloud/project/1367/test-cases?treeId=0)</a>
+
+****
+
 ## ☑️ Визуализация
 
 Ниже представлены скриншоты основных инструментов и процессов, используемых в ходе разработки и тестирования проекта.
@@ -114,7 +128,7 @@ ${TASK}
 #### Результат выполнения теста
 
 <p align="center">
-<img width="100%" title="AllureReport" src="media/screenshots/Allure Report.png">
+<img width="100%" title="AllureReport" src="media/screenshots/Allure Report.png"> 
 </p>
 
 </details>
