@@ -10,6 +10,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.files.DownloadActions.click;
 import static io.qameta.allure.Allure.step;
 
 @Tag("x5test")
@@ -44,6 +45,7 @@ public class LaunchTests extends TestBase {
                 mainPage.openMainPage();
             });
             step("Кликнуть", () -> {
+                $(".header__nav-link");
                 $(byText(value)).click();;
             });
             step("Проверка совпадения", () -> {
@@ -59,6 +61,7 @@ public class LaunchTests extends TestBase {
             mainPage.openMainPage();
         });
         step("Кликаем Партнёрам", () -> {
+            $(".header__nav-link");
             $(byText("Партнёрам")).click();
         });
         step("Результат Партнерам", () -> {
@@ -74,6 +77,7 @@ public class LaunchTests extends TestBase {
             mainPage.openMainPage();
         });
         step("Кликаем Акционерам и инвесторам", () -> {
+            $(".header__nav-link");
             $(byText("Акционерам и инвесторам")).click();
         });
         step("Результат Инвесторам", () -> {
