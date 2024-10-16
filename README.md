@@ -95,14 +95,11 @@ ${TASK}
 
 ## Сборки:
 
-<a id="jenkins"></a>
-## <img alt="Jenkins" height="25" src="media/logo/Jenkins.png" width="25"/></a><a name="Сборка"></a>Сборка в [Jenkins](https://jenkins.autotests.cloud/job/X5_Group_14/)</a>
+- <a id="jenkins"></a> <img alt="Jenkins" height="25" src="media/logo/Jenkins.png" width="25"/></a><a name="Сборка"></a>Сборка в [Jenkins](https://jenkins.autotests.cloud/job/X5_Group_14/)</a>
 
-<a id="Allure"></a>
-## <img alt="Allure" height="25" src="media/logo/AllureReports.png" width="25"/></a><a name="Сборка"></a>Сборка в [Allure](https://jenkins.autotests.cloud/job/X5_Group_14/19/allure/)</a>
+- <a id="Allure"></a> <img alt="Allure" height="25" src="media/logo/AllureReports.png" width="25"/></a><a name="Сборка"></a>Сборка в [Allure](https://jenkins.autotests.cloud/job/X5_Group_14/19/allure/)</a>
 
-<a id="Allure TestOps"></a>
-## <img alt="Allure TestOps" height="25" src="media/logo/AllureTestOps.svg" width="25"/></a><a name="Сборка"></a>Сборка в [Allure TestOps](https://allure.autotests.cloud/project/1367/test-cases?treeId=0)</a>
+- <a id="Allure TestOps"></a> <img alt="Allure TestOps" height="25" src="media/logo/AllureTestOps.svg" width="25"/></a><a name="Сборка"></a>Сборка в [Allure TestOps](https://allure.autotests.cloud/project/1367/test-cases?treeId=0)</a>
 
 ****
 
