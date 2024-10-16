@@ -18,7 +18,7 @@ public class FooterPage {
 
     public FooterPage checkVK() {
         $(byText("VK")).click();
-        switchTo().window("X5 Group | ВКонтакте");
+        switchTo().window("X5 Group | VK");
         assertThat("X5 Group | ВКонтакте");
 
         $(".page_name").shouldHave(Condition.text("X5 Group"));
