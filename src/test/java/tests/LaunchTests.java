@@ -10,7 +10,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.files.DownloadActions.click;
 import static io.qameta.allure.Allure.step;
 
 @Tag("x5test")
@@ -27,7 +26,7 @@ public class LaunchTests extends TestBase {
             $("#search-term-header").setValue("X5 Import").pressEnter();
         });
         step("Результат X5 Import", () -> {
-                $(".search-results__term-hint").shouldHave(text("X5 Import"));
+            $(".search-results__term-hint").shouldHave(text("X5 Import"));
         });
     }
 
@@ -46,7 +45,7 @@ public class LaunchTests extends TestBase {
             });
             step("Кликнуть", () -> {
                 $(".header__nav-link");
-                $(byText(value)).click();;
+                $(byText(value)).click();
             });
             step("Проверка совпадения", () -> {
                 $("[aria-label='breadcrumbs']").shouldHave(Condition.text(value));
@@ -117,7 +116,7 @@ public class LaunchTests extends TestBase {
             mainPage.openMainPage();
         });
         step("Переходим на страницу VK", () -> {
-            footer.checkVK();
+            vkPage.checkVK();
         });
 
     }
@@ -129,7 +128,7 @@ public class LaunchTests extends TestBase {
             mainPage.openMainPage();
         });
         step("Переходим на страницу Dzen", () -> {
-            footer.checkDzen();
+            dzenPage.checkDzen();
         });
 
     }

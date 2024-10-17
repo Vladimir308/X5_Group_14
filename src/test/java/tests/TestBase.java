@@ -7,8 +7,9 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import pages.FooterPage;
+import pages.DzenPage;
 import pages.MainPage;
+import pages.VkPage;
 import testdata.TestData;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
@@ -17,7 +18,8 @@ public abstract class TestBase {
 
     MainPage mainPage = new MainPage();
     TestData testData = new TestData();
-    FooterPage footer = new FooterPage();
+    VkPage vkPage = new VkPage();
+    DzenPage dzenPage = new DzenPage();
 
     @BeforeAll
     static void beforeAll() {
