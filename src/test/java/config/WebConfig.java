@@ -23,6 +23,6 @@ public interface WebConfig extends Config {
     @DefaultValue("126.0")
     String getBrowserVersion();
 
-    @Key("remoteUrl")
+    @Key("selenoidURL")
     String getRemoteUrl();
 }
