@@ -7,8 +7,8 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import pages.DzenPage;
 import pages.MainPage;
+import pages.TenChatPage;
 import pages.VkPage;
 import testdata.TestData;
 
@@ -19,7 +19,7 @@ public abstract class TestBase {
     MainPage mainPage = new MainPage();
     TestData testData = new TestData();
     VkPage vkPage = new VkPage();
-    DzenPage dzenPage = new DzenPage();
+    TenChatPage tenChatPage = new TenChatPage();
 
     @BeforeAll
     static void beforeAll() {

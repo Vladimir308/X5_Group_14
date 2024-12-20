@@ -122,13 +122,13 @@ public class LaunchTests extends TestBase {
     }
 
     @Test
-    @DisplayName("Проверка перехода на страницу X5 Dzen")
+    @DisplayName("Проверка перехода на страницу TenChat")
     public void checkX5Dzen() {
         step("Открыть главную страницу", () -> {
             mainPage.openMainPage();
         });
-        step("Переходим на страницу Dzen", () -> {
-            dzenPage.checkDzen();
+        step("Переходим на страницу TenChat", () -> {
+            tenChatPage.checkTen();
         });
 
     }
