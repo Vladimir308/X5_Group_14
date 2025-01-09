@@ -81,19 +81,15 @@ public class LaunchTests extends TestBase {
     @DisplayName("Проверка адреса")
     public void verifyAddress() {
             mainPage.openMainPage();
-        step("Адрес совпадает", () -> {
             mainPage.checkAddress(testData.address);
-        });
     }
 
     @Test
     @DisplayName("Проверка номеров телефона")
     public void verifyPhoneNumber() {
             mainPage.openMainPage();
-        step("Номера совпадают", () -> {
             mainPage.checkPhone(testData.phoneNumber_1)
                     .checkPhone(testData.phoneNumber_2);
-        });
     }
 
     @Test
@@ -101,20 +97,14 @@ public class LaunchTests extends TestBase {
 
     public void checkX5Vk() {
             mainPage.openMainPage();
-        step("Переходим на страницу VK", () -> {
             vkPage.checkVK();
-        });
-
     }
 
     @Test
     @DisplayName("Проверка перехода на страницу TenChat")
     public void checkTenChat() {
             mainPage.openMainPage();
-        step("Переходим на страницу TenChat", () -> {
             tenChatPage.checkTen();
-        });
-
     }
 }
 
