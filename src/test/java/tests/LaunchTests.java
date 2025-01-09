@@ -15,19 +15,6 @@ import static io.qameta.allure.Allure.step;
 @Tag("x5test")
 public class LaunchTests extends TestBase {
 
-    @Test
-    @DisplayName("Проверка перехода на страницу импорта")
-    public void checkMainPageOpen() {
-            mainPage.openMainPage();
-        step("Ввести в поиск X5 Import", () -> {
-            $(".header-search__search-btn").click();
-            $("#search-term-header").setValue("X5 Import").pressEnter();
-        });
-        step("Результат X5 Import", () -> {
-            $(".search-results__term-hint").shouldHave(text("X5 Import"));
-        });
-    }
-
     @ValueSource(strings = {
             "Компания",
             "Покупателю",
@@ -49,18 +36,12 @@ public class LaunchTests extends TestBase {
         });
     }
 
+
     @Test
     @DisplayName("Несоответствие ожидаемому")
     public void negativeNavigationTests() {
-            mainPage.openMainPage();
-        step("Кликаем Партнёрам", () -> {
-            $(".header__nav-link");
-            $(byText("Партнёрам")).click();
-        });
-        step("Результат Партнерам", () -> {
-            $("[aria-label='breadcrumbs']");
-            $(".hero-company__title").shouldHave(text("Партнерам"));
-        });
+            mainPage.openMainPage()
+                    .checkPartners();
     }
 
     @Test
@@ -78,23 +59,29 @@ public class LaunchTests extends TestBase {
     }
 
     @Test
+    @DisplayName("Проверка перехода на страницу импорта")
+    public void checkMainPageOpen() {
+        mainPage.openMainPage()
+                .checkImport();
+    }
+
+    @Test
     @DisplayName("Проверка адреса")
     public void verifyAddress() {
-            mainPage.openMainPage();
-            mainPage.checkAddress(testData.address);
+            mainPage.openMainPage()
+                    .checkAddress(testData.address);
     }
 
     @Test
     @DisplayName("Проверка номеров телефона")
     public void verifyPhoneNumber() {
-            mainPage.openMainPage();
-            mainPage.checkPhone(testData.phoneNumber_1)
+            mainPage.openMainPage()
+                    .checkPhone(testData.phoneNumber_1)
                     .checkPhone(testData.phoneNumber_2);
     }
 
     @Test
     @DisplayName("Проверка перехода на страницу X5 VK")
-
     public void checkX5Vk() {
             mainPage.openMainPage();
             vkPage.checkVK();
@@ -107,4 +94,3 @@ public class LaunchTests extends TestBase {
             tenChatPage.checkTen();
     }
 }
-
