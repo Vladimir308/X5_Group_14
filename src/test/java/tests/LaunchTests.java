@@ -7,14 +7,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static io.qameta.allure.Allure.step;
 
 @Tag("x5test")
 public class LaunchTests extends TestBase {
-
     @ValueSource(strings = {
             "Компания",
             "Покупателю",
@@ -25,7 +23,7 @@ public class LaunchTests extends TestBase {
     @DisplayName("Соответствие ожидаемому")
     public void checkNavigation(String value) {
         step("Проверка всех разделов", () -> {
-                mainPage.openMainPage();
+            mainPage.openMainPage();
             step("Кликнуть", () -> {
                 $(".header__nav-link");
                 $(byText(value)).click();
@@ -36,26 +34,18 @@ public class LaunchTests extends TestBase {
         });
     }
 
-
     @Test
     @DisplayName("Несоответствие ожидаемому")
     public void negativeNavigationTests() {
-            mainPage.openMainPage()
-                    .checkPartners();
+        mainPage.openMainPage()
+                .checkPartners();
     }
 
     @Test
     @DisplayName("Несоответствие ожидаемому")
     public void negativeNavigationTests1() {
-            mainPage.openMainPage();
-        step("Кликаем Акционерам и инвесторам", () -> {
-            $(".header__nav-link");
-            $(byText("Акционерам и инвесторам")).click();
-        });
-        step("Результат Инвесторам", () -> {
-            $("[aria-label='breadcrumbs']");
-            $(".hero-for-investors__title").shouldHave(text("Инвесторам"));
-        });
+        mainPage.openMainPage()
+                .checkInvestors();
     }
 
     @Test
@@ -68,29 +58,29 @@ public class LaunchTests extends TestBase {
     @Test
     @DisplayName("Проверка адреса")
     public void verifyAddress() {
-            mainPage.openMainPage()
-                    .checkAddress(testData.address);
+        mainPage.openMainPage()
+                .checkAddress(testData.address);
     }
 
     @Test
     @DisplayName("Проверка номеров телефона")
     public void verifyPhoneNumber() {
-            mainPage.openMainPage()
-                    .checkPhone(testData.phoneNumber_1)
-                    .checkPhone(testData.phoneNumber_2);
+        mainPage.openMainPage()
+                .checkPhone(testData.phoneNumber_1)
+                .checkPhone(testData.phoneNumber_2);
     }
 
     @Test
     @DisplayName("Проверка перехода на страницу X5 VK")
     public void checkX5Vk() {
-            mainPage.openMainPage();
-            vkPage.checkVK();
+        mainPage.openMainPage();
+        vkPage.checkVK();
     }
 
     @Test
     @DisplayName("Проверка перехода на страницу TenChat")
     public void checkTenChat() {
-            mainPage.openMainPage();
-            tenChatPage.checkTen();
+        mainPage.openMainPage();
+        tenChatPage.checkTen();
     }
 }

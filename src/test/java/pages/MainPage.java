@@ -45,4 +45,12 @@ public class MainPage {
         return this;
     }
 
+    @Step("Проверка раздела Investors")
+    public MainPage checkInvestors() {
+        $(".header__nav-link");
+        $(byText("Акционерам и инвесторам")).click();
+        $("[aria-label='breadcrumbs']");
+        $(".hero-for-investors__title").shouldHave(text("Инвесторам"));
+        return this;
+    }
 }
