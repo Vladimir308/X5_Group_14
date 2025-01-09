@@ -16,11 +16,9 @@ import static io.qameta.allure.Allure.step;
 public class LaunchTests extends TestBase {
 
     @Test
-    @DisplayName("Проверка импорта")
+    @DisplayName("Проверка перехода на страницу импорта")
     public void checkMainPageOpen() {
-        step("Открыть главную страницу", () -> {
             mainPage.openMainPage();
-        });
         step("Ввести в поиск X5 Import", () -> {
             $(".header-search__search-btn").click();
             $("#search-term-header").setValue("X5 Import").pressEnter();
@@ -40,9 +38,7 @@ public class LaunchTests extends TestBase {
     @DisplayName("Соответствие ожидаемому")
     public void checkNavigation(String value) {
         step("Проверка всех разделов", () -> {
-            step("Открыть главную страницу", () -> {
                 mainPage.openMainPage();
-            });
             step("Кликнуть", () -> {
                 $(".header__nav-link");
                 $(byText(value)).click();
@@ -56,9 +52,7 @@ public class LaunchTests extends TestBase {
     @Test
     @DisplayName("Несоответствие ожидаемому")
     public void negativeNavigationTests() {
-        step("Открыть главную страницу", () -> {
             mainPage.openMainPage();
-        });
         step("Кликаем Партнёрам", () -> {
             $(".header__nav-link");
             $(byText("Партнёрам")).click();
@@ -72,9 +66,7 @@ public class LaunchTests extends TestBase {
     @Test
     @DisplayName("Несоответствие ожидаемому")
     public void negativeNavigationTests1() {
-        step("Открыть главную страницу", () -> {
             mainPage.openMainPage();
-        });
         step("Кликаем Акционерам и инвесторам", () -> {
             $(".header__nav-link");
             $(byText("Акционерам и инвесторам")).click();
@@ -88,9 +80,7 @@ public class LaunchTests extends TestBase {
     @Test
     @DisplayName("Проверка адреса")
     public void verifyAddress() {
-        step("Открыть главную страницу", () -> {
             mainPage.openMainPage();
-        });
         step("Адрес совпадает", () -> {
             mainPage.checkAddress(testData.address);
         });
@@ -99,9 +89,7 @@ public class LaunchTests extends TestBase {
     @Test
     @DisplayName("Проверка номеров телефона")
     public void verifyPhoneNumber() {
-        step("Открыть главную страницу", () -> {
             mainPage.openMainPage();
-        });
         step("Номера совпадают", () -> {
             mainPage.checkPhone(testData.phoneNumber_1)
                     .checkPhone(testData.phoneNumber_2);
@@ -112,9 +100,7 @@ public class LaunchTests extends TestBase {
     @DisplayName("Проверка перехода на страницу X5 VK")
 
     public void checkX5Vk() {
-        step("Открыть главную страницу", () -> {
             mainPage.openMainPage();
-        });
         step("Переходим на страницу VK", () -> {
             vkPage.checkVK();
         });
@@ -124,9 +110,7 @@ public class LaunchTests extends TestBase {
     @Test
     @DisplayName("Проверка перехода на страницу TenChat")
     public void checkTenChat() {
-        step("Открыть главную страницу", () -> {
             mainPage.openMainPage();
-        });
         step("Переходим на страницу TenChat", () -> {
             tenChatPage.checkTen();
         });
