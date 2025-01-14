@@ -9,7 +9,9 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Tag("x5test")
 public class LaunchTests extends TestBase {
@@ -20,15 +22,15 @@ public class LaunchTests extends TestBase {
             "Карьера"
     })
     @ParameterizedTest(name = "{index}: {0}")
-    @DisplayName("Соответствие ожидаемому")
+    @DisplayName("Проверка разделов верхнего меню")
     public void checkNavigation(String value) {
-        step("Проверка всех разделов", () -> {
-            mainPage.openMainPage();
+        step("Открыть главную страницу X5Group", () -> {
+            mainPage.openMainPageRu();
             step("Кликнуть", () -> {
                 $(".header__nav-link");
                 $(byText(value)).click();
             });
-            step("Проверка совпадения", () -> {
+            step("Проверка открытия раздела", () -> {
                 $("[aria-label='breadcrumbs']").shouldHave(Condition.text(value));
             });
         });
@@ -37,35 +39,35 @@ public class LaunchTests extends TestBase {
     @Test
     @DisplayName("Несоответствие ожидаемому")
     public void negativeNavigationTests() {
-        mainPage.openMainPage()
+        mainPage.openMainPageRu()
                 .checkPartners();
     }
 
     @Test
     @DisplayName("Несоответствие ожидаемому")
     public void negativeNavigationTests1() {
-        mainPage.openMainPage()
+        mainPage.openMainPageRu()
                 .checkInvestors();
     }
 
     @Test
     @DisplayName("Проверка перехода на страницу импорта")
     public void checkMainPageOpen() {
-        mainPage.openMainPage()
+        mainPage.openMainPageRu()
                 .checkImport();
     }
 
     @Test
     @DisplayName("Проверка адреса")
     public void verifyAddress() {
-        mainPage.openMainPage()
+        mainPage.openMainPageRu()
                 .checkAddress(testData.address);
     }
 
     @Test
     @DisplayName("Проверка номеров телефона")
     public void verifyPhoneNumber() {
-        mainPage.openMainPage()
+        mainPage.openMainPageRu()
                 .checkPhone(testData.phoneNumber_1)
                 .checkPhone(testData.phoneNumber_2);
     }
@@ -73,14 +75,14 @@ public class LaunchTests extends TestBase {
     @Test
     @DisplayName("Проверка перехода на страницу X5 VK")
     public void checkX5Vk() {
-        mainPage.openMainPage();
+        mainPage.openMainPageRu();
         vkPage.checkVK();
     }
 
     @Test
     @DisplayName("Проверка перехода на страницу TenChat")
     public void checkTenChat() {
-        mainPage.openMainPage();
+        mainPage.openMainPageRu();
         tenChatPage.checkTen();
     }
-}
+    }

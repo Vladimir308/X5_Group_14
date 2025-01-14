@@ -10,9 +10,15 @@ import static com.codeborne.selenide.Selenide.open;
 public class MainPage {
     Footer footer = new Footer();
 
-    @Step("Открыть главную страницу")
-    public MainPage openMainPage() {
-        open("https://www.x5.ru/ru");
+    @Step("Открыть главную страницу на русском языке")
+    public MainPage openMainPageRu() {
+        open("https://www.x5.ru/ru/");
+        return this;
+    }
+
+    @Step("Открыть главную страницу на английском языке")
+    public MainPage openMainPageEn() {
+        open("https://www.x5.ru/en/");
         return this;
     }
 
@@ -51,6 +57,24 @@ public class MainPage {
         $(byText("Акционерам и инвесторам")).click();
         $("[aria-label='breadcrumbs']");
         $(".hero-for-investors__title").shouldHave(text("Инвесторам"));
+        return this;
+    }
+
+    @Step("Проверка раздела Investors")
+    public MainPage checkInvestor() {
+        $(".header__nav-link");
+        $(byText("Investors")).click();
+        $("[aria-label='breadcrumbs']");
+        $(".hero-for-investors__title").shouldHave(text("Investor Relations"));
+        return this;
+    }
+
+    @Step("Проверка раздела Press Centre")
+    public MainPage checkPressCentre() {
+        $(".header__nav-link");
+        $(byText("Press Centre")).click();
+        $("[aria-label='breadcrumbs']");
+        $(".hero-company__title").shouldHave(text("Press Center"));
         return this;
     }
 }
