@@ -12,8 +12,8 @@ public class VkPage {
     @Step("Переход на страницу VK")
     public VkPage checkVK() {
         $(byText("VK")).click();
-        switchTo().window("X5 Group | ВКонтакте");
-        assertThat("X5 Group | ВКонтакте");
+        switchTo().window("X5 Group  | VK");
+        assertThat("X5 Group  | VK");
         open("https://vk.com/x5group");
         $(".page_name").shouldHave(Condition.text("X5 Group"));
         return this;

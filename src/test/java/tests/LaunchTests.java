@@ -37,14 +37,14 @@ public class LaunchTests extends TestBase {
     }
 
     @Test
-    @DisplayName("Несоответствие ожидаемому")
+    @DisplayName("Несоответствие заголовка страницы")
     public void negativeNavigationTests() {
         mainPage.openMainPageRu()
                 .checkPartners();
     }
 
     @Test
-    @DisplayName("Несоответствие ожидаемому")
+    @DisplayName("Несоответствие заголовка страницы")
     public void negativeNavigationTests1() {
         mainPage.openMainPageRu()
                 .checkInvestors();
