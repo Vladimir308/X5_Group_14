@@ -48,4 +48,16 @@ public class X5Tests extends TestBase {
         mainPage.openMainPageEn()
                 .checkPressCentre();
     }
+
+    @Test
+    public void Otzyv(){
+        mainPage.openMainPageRu();
+        dialogPage.checkDialog();
+    }
+
+    @Test
+    public void Commercia(){
+        mainPage.openMainPageRu();
+        commerciaPage.checkCommercia();
+    }
 }
