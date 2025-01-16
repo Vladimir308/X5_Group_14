@@ -57,4 +57,9 @@ test {
             includeTags("x5test");
         }
     }
+    task for_test_X5(type: Test) {
+        useJUnitPlatform {
+            includeTags("testX5");
+        }
+    }
 }

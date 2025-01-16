@@ -20,6 +20,9 @@ public abstract class TestBase {
     TenChatPage tenChatPage = new TenChatPage();
     DialogPage dialogPage = new DialogPage();
     CommerciaPage commerciaPage = new CommerciaPage();
+    PokupatelPage pokupatelPage = new PokupatelPage();
+    LiniaPage liniaPage = new LiniaPage();
+    SotrudnikPage sotrudnikPage = new SotrudnikPage();
 
     @BeforeAll
     static void beforeAll() {

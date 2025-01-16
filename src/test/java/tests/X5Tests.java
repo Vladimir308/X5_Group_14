@@ -13,7 +13,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
-@Tag("x5test")
+@Tag("testX5")
 public class X5Tests extends TestBase {
 
     @EnumSource(Language.class)
@@ -50,14 +50,32 @@ public class X5Tests extends TestBase {
     }
 
     @Test
-    public void Otzyv(){
+    public void Otzyv() {
         mainPage.openMainPageRu();
         dialogPage.checkDialog();
     }
 
     @Test
-    public void Commercia(){
+    public void Commercia() {
         mainPage.openMainPageRu();
         commerciaPage.checkCommercia();
+    }
+
+    @Test
+    public void Pokupka() {
+        mainPage.openMainPageRu();
+        pokupatelPage.checkPokupka();
+    }
+
+    @Test
+    public void Linia() {
+        mainPage.openMainPageRu();
+        liniaPage.checkLinia();
+    }
+
+    @Test
+    public void Sotrudnik() {
+        mainPage.openMainPageRu();
+        sotrudnikPage.checkSotrudnik();
     }
 }
