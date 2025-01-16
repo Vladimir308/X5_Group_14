@@ -11,6 +11,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class DialogPage {
     @Step("Переход на страницу Dialog")
     public DialogPage checkDialog() {
+        $(".button__text");
+        $(byText("Принять")).click();
         $(".css-1n9v7xy");
         $(byText("Выберите роль")).click();
         $("#react-select-2-option-0");
