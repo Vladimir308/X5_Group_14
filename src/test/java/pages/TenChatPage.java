@@ -3,8 +3,8 @@ package pages;
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 
-import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
 public class TenChatPage {
     @Step("Переход на страницу TenChat")
