@@ -9,10 +9,6 @@ import static com.codeborne.selenide.Selenide.$;
 public class LiniaPage {
     @Step("Переход на страницу Dialog")
     public LiniaPage checkLinia() {
-        $(".button__text");
-        $(byText("Принять")).click();
-        $(".css-1n9v7xy");
-        $(byText("Выберите роль")).click();
         $("#react-select-2-option-8");
         $(byText("Прочие обращения")).click();
         $("#input-text-48").setValue("Иванов Иван Иванович");

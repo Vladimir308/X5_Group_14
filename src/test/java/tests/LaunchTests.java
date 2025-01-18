@@ -25,7 +25,8 @@ public class LaunchTests extends TestBase {
     @DisplayName("Проверка разделов верхнего меню")
     public void checkNavigation(String value) {
         step("Открыть главную страницу X5Group", () -> {
-            mainPage.openMainPageRu();
+            mainPage.openMainPageRu()
+                    .acceptCookie();
             step("Кликнуть", () -> {
                 $(".header__nav-link");
                 $(byText(value)).click();
@@ -40,6 +41,7 @@ public class LaunchTests extends TestBase {
     @DisplayName("Несоответствие заголовка страницы")
     public void negativeNavigationTests() {
         mainPage.openMainPageRu()
+                .acceptCookie()
                 .checkPartners();
     }
 
@@ -47,6 +49,7 @@ public class LaunchTests extends TestBase {
     @DisplayName("Несоответствие заголовка страницы")
     public void negativeNavigationTests1() {
         mainPage.openMainPageRu()
+                .acceptCookie()
                 .checkInvestors();
     }
 
@@ -54,6 +57,7 @@ public class LaunchTests extends TestBase {
     @DisplayName("Проверка перехода на страницу импорта")
     public void checkMainPageOpen() {
         mainPage.openMainPageRu()
+                .acceptCookie()
                 .checkImport();
     }
 
@@ -61,6 +65,7 @@ public class LaunchTests extends TestBase {
     @DisplayName("Проверка адреса")
     public void verifyAddress() {
         mainPage.openMainPageRu()
+                .acceptCookie()
                 .checkAddress(testData.address);
     }
 
@@ -68,6 +73,7 @@ public class LaunchTests extends TestBase {
     @DisplayName("Проверка номеров телефона")
     public void verifyPhoneNumber() {
         mainPage.openMainPageRu()
+                .acceptCookie()
                 .checkPhone(testData.phoneNumber_1)
                 .checkPhone(testData.phoneNumber_2);
     }
@@ -75,14 +81,16 @@ public class LaunchTests extends TestBase {
     @Test
     @DisplayName("Проверка перехода на страницу X5 VK")
     public void checkX5Vk() {
-        mainPage.openMainPageRu();
+        mainPage.openMainPageRu()
+                .acceptCookie();
         vkPage.checkVK();
     }
 
     @Test
     @DisplayName("Проверка перехода на страницу TenChat")
     public void checkTenChat() {
-        mainPage.openMainPageRu();
+        mainPage.openMainPageRu()
+                .acceptCookie();
         tenChatPage.checkTen();
     }
-    }
+}

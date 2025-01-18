@@ -9,6 +9,13 @@ import static com.codeborne.selenide.Selenide.*;
 public class MainPage {
     Footer footer = new Footer();
 
+    @Step("Принять соглашение Cookie")
+    public MainPage acceptCookie() {
+        $(".button__text");
+        $(byText("Принять")).click();
+        return this;
+    }
+
     @Step("Открыть главную страницу на русском языке")
     public MainPage openMainPageRu() {
         open("https://www.x5.ru/ru/");
@@ -74,6 +81,13 @@ public class MainPage {
         $(byText("Press Centre")).click();
         $("[aria-label='breadcrumbs']");
         $(".hero-company__title").shouldHave(text("Press Center"));
+        return this;
+    }
+
+    @Step("Выбрать роль")
+    public MainPage roleChoose() {
+        $(".css-1n9v7xy");
+        $(byText("Выберите роль")).click();
         return this;
     }
 }

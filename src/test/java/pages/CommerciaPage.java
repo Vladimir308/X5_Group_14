@@ -11,10 +11,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CommerciaPage {
     @Step("Переход на страницу Dialog")
     public CommerciaPage checkCommercia() {
-        $(".button__text");
-        $(byText("Принять")).click();
-        $(".css-1n9v7xy");
-        $(byText("Выберите роль")).click();
         $("#react-select-2-option-0");
         $(byText("Я поставщик")).click();
         $(".css-1n9v7xy").click();

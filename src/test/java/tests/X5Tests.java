@@ -40,42 +40,55 @@ public class X5Tests extends TestBase {
     @Test
     public void CheckNavigation() {
         mainPage.openMainPageEn()
+                .acceptCookie()
                 .checkInvestor();
     }
 
     @Test
     public void CheckNavigation1() {
         mainPage.openMainPageEn()
+                .acceptCookie()
                 .checkPressCentre();
     }
 
     @Test
     public void Otzyv() {
-        mainPage.openMainPageRu();
+        mainPage.openMainPageRu()
+                .acceptCookie()
+                .roleChoose();
         dialogPage.checkDialog();
     }
 
     @Test
     public void Commercia() {
-        mainPage.openMainPageRu();
+        mainPage.openMainPageRu()
+                .acceptCookie()
+                .roleChoose();
         commerciaPage.checkCommercia();
     }
 
     @Test
     public void Pokupka() {
-        mainPage.openMainPageRu();
+        mainPage.openMainPageRu()
+                .acceptCookie()
+                .roleChoose();
         pokupatelPage.checkPokupka();
     }
 
     @Test
     public void Linia() {
-        mainPage.openMainPageRu();
+        mainPage.openMainPageRu()
+                .acceptCookie()
+                .roleChoose();
         liniaPage.checkLinia();
     }
 
     @Test
+    @DisplayName("Переход на страницу, Обращение на Горячую линию по этике")
     public void Sotrudnik() {
-        mainPage.openMainPageRu();
+        mainPage.openMainPageRu()
+                .acceptCookie()
+                .roleChoose();
         sotrudnikPage.checkSotrudnik();
     }
 }
