@@ -8,7 +8,7 @@ import org.aeonbits.owner.Config;
 
 public interface WebConfig extends Config {
     @Key("baseUrl")
-    @DefaultValue("https://www.x5.ru/ru")
+    @DefaultValue("https://www.x5.ru")
     String getBaseUrl();
 
     @Key("browserName")
@@ -20,9 +20,18 @@ public interface WebConfig extends Config {
     String getBrowserSize();
 
     @Key("browserVersion")
-    @DefaultValue("126.0")
+    @DefaultValue("132.0")
     String getBrowserVersion();
 
-    @Key("selenoidURL")
+    @Key("selenoidUser")
+    String selenoidUser();
+
+    @Key("selenoidPassword")
+    String selenoidPassword();
+
+    @Key("selenoidHost")
+    String selenoidHost();
+
+    @Key("remoteUrl")
     String getRemoteUrl();
 }

@@ -9,10 +9,20 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class MainPage {
     Footer footer = new Footer();
+//    private final SelenideElement
+//            searchCard = $(accessibilityId("Search Wikipedia")),
+//            topMenu = $(id(".header__nav-link"));
+//
+//
+//    @Step("Проверка регистрации, видимость Login")
+//    public void loginButton() {
+//        menuButton.click();
+//        nameAccount.shouldHave(text("Log in to Wikipedia"));
+//        nameAccount.click();
+//    }
 
     @Step("Принять соглашение Cookie")
     public MainPage acceptCookie() {
-        $(".button__text");
         $(byText("Принять")).click();
         return this;
     }
@@ -43,7 +53,6 @@ public class MainPage {
 
     @Step("Проверка адреса")
     public MainPage checkPartners() {
-        $(".header__nav-link");
         $(byText("Партнёрам")).click();
         $("[aria-label='breadcrumbs']");
         $(".hero-company__title").shouldHave(text("Партнерам"));
@@ -60,7 +69,6 @@ public class MainPage {
 
     @Step("Проверка раздела Investors")
     public MainPage checkInvestors() {
-        $(".header__nav-link");
         $(byText("Акционерам и инвесторам")).click();
         $("[aria-label='breadcrumbs']");
         $(".hero-for-investors__title").shouldHave(text("Инвесторам"));
@@ -69,7 +77,6 @@ public class MainPage {
 
     @Step("Проверка раздела Investors")
     public MainPage checkInvestor() {
-        $(".header__nav-link");
         $(byText("Investors")).click();
         $("[aria-label='breadcrumbs']");
         $(".hero-for-investors__title").shouldHave(text("Investor Relations"));
@@ -78,7 +85,6 @@ public class MainPage {
 
     @Step("Проверка раздела Press Centre")
     public MainPage checkPressCentre() {
-        $(".header__nav-link");
         $(byText("Press Centre")).click();
         $("[aria-label='breadcrumbs']");
         $(".hero-company__title").shouldHave(text("Press Center"));
@@ -87,7 +93,6 @@ public class MainPage {
 
     @Step("Выбрать роль")
     public MainPage roleChoose() {
-        $(".css-1n9v7xy");
         $(byText("Выберите роль")).click();
         return this;
     }

@@ -7,7 +7,10 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import pages.*;
+import pages.FeedBackPage;
+import pages.MainPage;
+import pages.TenChatPage;
+import pages.VkPage;
 import testdata.TestData;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
@@ -18,16 +21,13 @@ public abstract class TestBase {
     TestData testData = new TestData();
     VkPage vkPage = new VkPage();
     TenChatPage tenChatPage = new TenChatPage();
-    DialogPage dialogPage = new DialogPage();
-    CommerciaPage commerciaPage = new CommerciaPage();
-    PokupatelPage pokupatelPage = new PokupatelPage();
-    LiniaPage liniaPage = new LiniaPage();
-    SotrudnikPage sotrudnikPage = new SotrudnikPage();
+    FeedBackPage feedBackPage = new FeedBackPage();
+
+    private static final WebDriverProvider driver = new WebDriverProvider();
 
     @BeforeAll
-    static void beforeAll() {
-        WebDriverProvider provider = new WebDriverProvider() {
-        };
+    public static void setUp() {
+        driver.createWebDriver();
     }
 
     @BeforeEach
@@ -42,6 +42,5 @@ public abstract class TestBase {
         Attach.browserConsoleLogs();
         Attach.addVideo();
         closeWebDriver();
-
     }
 }

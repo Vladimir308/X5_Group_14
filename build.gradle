@@ -1,17 +1,28 @@
 plugins {
     id 'java-library'
-    id "io.qameta.allure" version '2.11.2'
+    id "io.qameta.allure" version '2.12.0'
 }
+
+def slf4jVersion = "2.0.16",
+    junitVersion = "5.11.4",
+    selenideVersion = "7.7.0",
+    allureVersion = "2.29.1",
+    ownerVersion = "1.0.4",
+    assertjCoreVersion = "3.27.3",
+    webdrivermanagerVersion = "5.9.2",
+    aspectjweaver = "1.9.22.1",
+    contextproperties = "4.8.0"
+
 
 allure {
     report {
-        version.set("2.21.0")
+        version.set(allureVersion)
     }
     adapter {
         aspectjWeaver.set(true)
         frameworks {
             junit5 {
-                adapterVersion.set("2.21.0")
+                adapterVersion.set(allureVersion)
             }
         }
     }
@@ -22,17 +33,17 @@ repositories {
 }
 dependencies {
     testImplementation(
-            "com.codeborne:selenide:7.3.3",
-            "org.junit.jupiter:junit-jupiter:5.10.0",
-            "org.slf4j:slf4j-simple:2.0.13",
-            "com.github.javafaker:javafaker:1.0.2",
-            "io.qameta.allure:allure-junit5:2.19.1",
-            "org.aspectj:aspectjweaver:1.9.20",
-            "org.assertj:assertj-core:3.26.3",
-            "io.qameta.allure:allure-selenide:2.28.1",
-            "org.aeonbits.owner:owner:1.0.12",
-            "com.anrisoftware.propertiesutils:propertiesutils-contextproperties:4.7.0",
-            testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.10.0')
+            "com.codeborne:selenide:$selenideVersion",
+            "org.junit.jupiter:junit-jupiter:$junitVersion",
+            "org.slf4j:slf4j-simple:$slf4jVersion",
+            "io.qameta.allure:allure-junit5:$allureVersion",
+            "org.aspectj:aspectjweaver:$aspectjweaver",
+            "org.assertj:assertj-core:$assertjCoreVersion",
+            "io.qameta.allure:allure-selenide:$allureVersion",
+            "io.github.bonigarcia:webdrivermanager:$webdrivermanagerVersion",
+            "org.aeonbits.owner:owner:$ownerVersion",
+            "com.anrisoftware.propertiesutils:propertiesutils-contextproperties:$contextproperties",
+            testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
     )
 }
 tasks.withType(JavaCompile).configureEach {
@@ -42,7 +53,7 @@ tasks.withType(JavaCompile).configureEach {
 test {
     useJUnitPlatform()
 
-    tasks.withType(Test) {
+    tasks.withType(Test).configureEach {
         systemProperties(System.getProperties())
 
     }
@@ -52,14 +63,15 @@ test {
             exceptionFormat "short"
         }
     }
-    task for_x5_test(type: Test) {
-        useJUnitPlatform {
-            includeTags("x5test");
-        }
+}
+
+tasks.register('for_x5_test', Test) {
+    useJUnitPlatform {
+        includeTags("x5test")
     }
-    task for_test_X5(type: Test) {
-        useJUnitPlatform {
-            includeTags("testX5");
-        }
+}
+tasks.register('for_test_X5', Test) {
+    useJUnitPlatform {
+        includeTags("testX5")
     }
 }

@@ -11,10 +11,6 @@
     - Запуск тестов из терминала
     - Запуск тестов на удаленном браузере
     - Параметры сборки
-    - Сборки
-- Визуализация
-    - Сборка в Jenkins
-    - Пример Allure Report
     - Интеграция с Allure TestOps
     - Уведомление в Telegram
     - Демо видео запуска тестов
@@ -22,6 +18,10 @@
 ****
 
 ## ☑️ Использованные технологии и инструменты
+    - Сборки
+- Визуализация
+  - Сборка в Jenkins
+  - Пример Allure Report
 
 <p align="center">
 <a href="https://www.jetbrains.com/idea/"><img width="7%" title="IntelliJ IDEA" src="media/logo/IntelliJ_IDEA.png"></a>

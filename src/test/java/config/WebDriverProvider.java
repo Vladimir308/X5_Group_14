@@ -17,7 +17,7 @@ public class WebDriverProvider {
         createWebDriver();
     }
 
-    private void createWebDriver() {
+    public void createWebDriver() {
         Configuration.baseUrl = config.getBaseUrl();
         switch (config.getBrowserName().toLowerCase()) {
             case "chrome": {

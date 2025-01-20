@@ -1,5 +1,6 @@
 package tests;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.WebDriverRunner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -57,23 +58,23 @@ public class X5Tests extends TestBase {
         mainPage.openMainPageRu()
                 .acceptCookie()
                 .roleChoose();
-        dialogPage.checkDialog();
+        feedBackPage.checkDialog();
     }
 
-    @Test
-    public void Commercia() {
-        mainPage.openMainPageRu()
-                .acceptCookie()
-                .roleChoose();
-        commerciaPage.checkCommercia();
-    }
+//    @Test
+//    public void Commercia() {
+//        mainPage.openMainPageRu()
+//                .acceptCookie()
+//                .roleChoose();
+//        feedBackPage.checkCommercia();
+//    }
 
     @Test
     public void Pokupka() {
         mainPage.openMainPageRu()
                 .acceptCookie()
                 .roleChoose();
-        pokupatelPage.checkPokupka();
+        feedBackPage.checkPokupka();
     }
 
     @Test
@@ -81,7 +82,7 @@ public class X5Tests extends TestBase {
         mainPage.openMainPageRu()
                 .acceptCookie()
                 .roleChoose();
-        liniaPage.checkLinia();
+        feedBackPage.checkLinia();
     }
 
     @Test
@@ -90,6 +91,18 @@ public class X5Tests extends TestBase {
         mainPage.openMainPageRu()
                 .acceptCookie()
                 .roleChoose();
-        sotrudnikPage.checkSotrudnik();
+        //sotrudnikPage.checkSotrudnik();
+    }
+
+    @DisplayName("Проверить что в обратной связи при выборе роли сотрудника и нажатии далее открылась страница Обращение на Горячую линию")
+    @Test
+    public void checkEmployeeRoleInFeedbackTest() {
+        mainPage.openMainPageRu();
+        $(byText("Принять")).click();
+        $(byText("Выберите роль")).click();
+        $(byText("Я сотрудник")).click();
+        $("#x5-form-22 > div.x5-form__submit > a").click();
+        switchTo().window(1);
+        $(".hlf-heder-text").shouldHave(Condition.text("Обращение на Горячую линию по этике"));
     }
 }
