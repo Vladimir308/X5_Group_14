@@ -94,6 +94,6 @@ public class X5Tests extends TestBase {
         mainPage.openMainPageRu()
                 .acceptCookie();
         feedBackPage.roleChoose()
-                .employee();
+                .staff();
     }
 }

@@ -3,6 +3,7 @@ package pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import testdata.TestData;
 
 import java.time.Duration;
 
@@ -12,6 +13,8 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class FeedBackPage {
+
+    TestData data = new TestData();
 
     private final SelenideElement userNameDirector = $("#input-text-39"),
             emailDirector = $("#input-email-40"),
@@ -32,78 +35,86 @@ public class FeedBackPage {
             choosingCityBuyer = $("#input-text-13"),
             messageBuyer = $("#textarea-14"),
             buttonBuyer = $("#button-15"),
+            retailChain = $(byText("Торговая сеть")),
+            customer = $(byText("Я покупатель")),
+            shop = $(byText("Пятерочка")),
+            requestOther = $("#react-select-2-option-8"),
+            choose = $(byText("Выберите роль")),
+            provider = $(byText("Я поставщик")),
+            chapter = $(byText("Раздел")),
+            hotLine = $(byText("Горячая линия")),
+            further = $(byText("Далее")),
+            header = $(".content-header"),
+            employee = $(byText("Я сотрудник")),
+            furtherButton = $("#x5-form-22 > div.x5-form__submit > a"),
+            popUpWindow = $(".hlf-heder-text"),
             complaintDirector = $("#react-select-2-option-6");
 
+    @Step("Переход на страницу Dialog")
+    public FeedBackPage staff() {
+        employee.click();
+        furtherButton.click();
+        switchTo().window(1);
+        popUpWindow.shouldHave(Condition.text(data.contacting));
+        return this;
+    }
+
+    @Step("Переход на страницу Dialog")
+    public FeedBackPage dialog() {
+        provider.click();
+        chapter.click();
+        hotLine.click();
+        further.click();
+        switchTo().window(1);
+        open("https://dialog-sso.x5.ru/auth/realms/dialog/protocol/openid-connect/");
+        header.shouldHave(Condition.text(data.dialog));
+        return this;
+    }
 
     @Step("Переход на страницу Dialog")
     public FeedBackPage buyer() {
-        $(byText("Я покупатель")).click();
-        $(byText("Торговая сеть")).click();
-        $(byText("Пятерочка")).click();
-        userNameBuyer.setValue("Иванов Иван Иванович");
-        emailBuyer.setValue("Ivanov_Test@mail.ru");
-        telBuyer.setValue("9996663322");
-        choosingCityBuyer.setValue("Москва");
-        messageBuyer.setValue("Люблю X5 Group");
+        customer.click();
+        retailChain.click();
+        shop.click();
+        userNameBuyer.setValue(data.user);
+        emailBuyer.setValue(data.email);
+        telBuyer.setValue(data.numberPhone);
+        choosingCityBuyer.setValue(data.city);
+        messageBuyer.setValue(data.message);
         buttonBuyer.click();
-        messageSuccessfully.shouldBe(visible, Duration.ofSeconds(30)).shouldHave(exactText("Сообщение успешно отправлено!"));
+        messageSuccessfully.shouldBe(visible, Duration.ofSeconds(30)).shouldHave(exactText(data.successfullyMessage));
         return this;
     }
 
     @Step("Проверить ")
     public FeedBackPage otherRequests() {
-        $("#react-select-2-option-8");
-        $(byText("Прочие обращения")).click();
-        userNameOther.setValue("Иванов Иван Иванович");
-        emailRequests.setValue("Ivanov_Test@mail.ru");
-        telOther.setValue("9996663322");
-        choosingCityOther.setValue("Москва");
-        messageOther.setValue("Люблю X5 Group");
+        requestOther.click();
+        userNameOther.setValue(data.user);
+        emailRequests.setValue(data.email);
+        telOther.setValue(data.numberPhone);
+        choosingCityOther.setValue(data.city);
+        messageOther.setValue(data.message);
         buttonOther.click();
-        messageSuccessfully.shouldBe(visible, Duration.ofSeconds(30)).shouldHave(exactText("Сообщение успешно отправлено!"));
+        messageSuccessfully.shouldBe(visible, Duration.ofSeconds(30)).shouldHave(exactText(data.successfullyMessage));
         return this;
     }
 
     @Step("Выбрать роль")
     public FeedBackPage roleChoose() {
-        $(byText("Выберите роль")).click();
+        choose.click();
         return this;
     }
 
     @Step("Переход на страницу Dialog")
     public FeedBackPage directorOfSecurity() {
         complaintDirector.click();
-        userNameDirector.setValue("Иванов Иван Иванович");
-        emailDirector.setValue("Ivanov_Test@mail.ru");
-        telDirector.setValue("9996663322");
-        choosingCityDirector.setValue("Moscow");
-        messageDirector.setValue("Moscow");
+        userNameDirector.setValue(data.user);
+        emailDirector.setValue(data.email);
+        telDirector.setValue(data.numberPhone);
+        choosingCityDirector.setValue(data.city);
+        messageDirector.setValue(data.city);
         buttonDirector.click();
-        messageSuccessfully.shouldBe(visible, Duration.ofSeconds(30)).shouldHave(exactText("Сообщение успешно отправлено!"));
-        return this;
-    }
-
-    @Step("Переход на страницу Dialog")
-    public FeedBackPage dialog() {
-        $(byText("Я поставщик")).click();
-        $(byText("Раздел")).click();
-        $(byText("Горячая линия")).click();
-        $(byText("Далее")).click();
-        switchTo().window(1);
-        open("https://dialog-sso.x5.ru/auth/realms/dialog/protocol/openid-connect/");
-        $(".content-header").shouldHave(Condition.text("Dialog.X5"));
-        return this;
-    }
-
-
-
-
-    @Step("Переход на страницу Dialog")
-    public FeedBackPage employee() {
-        $(byText("Я сотрудник")).click();
-        $("#x5-form-22 > div.x5-form__submit > a").click();
-        switchTo().window(1);
-        $(".hlf-heder-text").shouldHave(Condition.text("Обращение на Горячую линию по этике"));
+        messageSuccessfully.shouldBe(visible, Duration.ofSeconds(30)).shouldHave(exactText(data.successfullyMessage));
         return this;
     }
 }

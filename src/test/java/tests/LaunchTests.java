@@ -37,7 +37,7 @@ public class LaunchTests extends TestBase {
 
     @Test
     @DisplayName("Несоответствие заголовка страницы")
-    public void negativeNavigationTests() {
+    public void negativeNavigationTest() {
         mainPage.openMainPageRu()
                 .acceptCookie()
                 .checkPartners();
@@ -45,7 +45,7 @@ public class LaunchTests extends TestBase {
 
     @Test
     @DisplayName("Несоответствие заголовка страницы")
-    public void negativeNavigationTests1() {
+    public void negativesNavigationTest() {
         mainPage.openMainPageRu()
                 .acceptCookie()
                 .checkInvestors();
@@ -53,7 +53,7 @@ public class LaunchTests extends TestBase {
 
     @Test
     @DisplayName("Проверка перехода на страницу импорта")
-    public void checkMainPageOpen() {
+    public void checkMainPageOpenTest() {
         mainPage.openMainPageRu()
                 .acceptCookie()
                 .checkImport();
@@ -61,7 +61,7 @@ public class LaunchTests extends TestBase {
 
     @Test
     @DisplayName("Проверка адреса")
-    public void verifyAddress() {
+    public void verifyAddressTest() {
         mainPage.openMainPageRu()
                 .acceptCookie()
                 .checkAddress(testData.address);
@@ -69,7 +69,7 @@ public class LaunchTests extends TestBase {
 
     @Test
     @DisplayName("Проверка номеров телефона")
-    public void verifyPhoneNumber() {
+    public void verifyPhoneNumberTest() {
         mainPage.openMainPageRu()
                 .acceptCookie()
                 .checkPhone(testData.phoneNumber_1)
@@ -78,7 +78,7 @@ public class LaunchTests extends TestBase {
 
     @Test
     @DisplayName("Проверка перехода на страницу X5 VK")
-    public void checkX5Vk() {
+    public void checkX5VkTest() {
         mainPage.openMainPageRu()
                 .acceptCookie();
         vkPage.checkVK();
@@ -86,7 +86,7 @@ public class LaunchTests extends TestBase {
 
     @Test
     @DisplayName("Проверка перехода на страницу TenChat")
-    public void checkTenChat() {
+    public void checkTenChatTest() {
         mainPage.openMainPageRu()
                 .acceptCookie();
         tenChatPage.checkTen();
