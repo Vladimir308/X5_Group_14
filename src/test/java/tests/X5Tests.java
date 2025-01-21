@@ -42,7 +42,6 @@ public class X5Tests extends TestBase {
     @Test
     public void checkTheTopMenuInvestorTest() {
         mainPage.openMainPageEn()
-                .acceptCookie()
                 .checkInvestor();
     }
 
@@ -50,7 +49,6 @@ public class X5Tests extends TestBase {
     @Test
     public void checkTheTopMenuPressCenterTest() {
         mainPage.openMainPageEn()
-                .acceptCookie()
                 .checkPressCentre();
     }
 

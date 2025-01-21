@@ -21,7 +21,7 @@ public class LaunchTests extends TestBase {
     })
     @ParameterizedTest(name = "{index}: {0}")
     @DisplayName("Проверка разделов верхнего меню")
-    public void checkNavigation(String value) {
+    public void checkTheTopMenuTest(String value) {
         step("Открыть главную страницу X5Group", () -> {
             mainPage.openMainPageRu()
                     .acceptCookie();
