@@ -1,6 +1,5 @@
 package tests;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.WebDriverRunner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -20,8 +19,8 @@ public class X5Tests extends TestBase {
 
     @EnumSource(Language.class)
     @ParameterizedTest(name = "{index}: Проверка навигации для языка {0}")
-    @DisplayName("Соответствие ожидаемому")
-    public void checkNavigations(Language language) {
+    @DisplayName("Проверка верхнего меню на разных языках")
+    public void checkTheTopMenuInDifferentLanguagesTest(Language language) {
         String url = language == Language.RU ? "https://www.x5.ru/en/" : "https://www.x5.ru/ru/";
         step("Открыть главную страницу X5Group", () -> {
             open(url);
@@ -39,70 +38,64 @@ public class X5Tests extends TestBase {
         }
     }
 
+    @DisplayName("Проверить что при нажатии на Investors отображается Investor Relations")
     @Test
-    public void CheckNavigation() {
+    public void checkTheTopMenuInvestorTest() {
         mainPage.openMainPageEn()
                 .acceptCookie()
                 .checkInvestor();
     }
 
+    @DisplayName("Проверить что при нажатии на Press Centre отображается Press center")
     @Test
-    public void CheckNavigation1() {
+    public void checkTheTopMenuPressCenterTest() {
         mainPage.openMainPageEn()
                 .acceptCookie()
                 .checkPressCentre();
     }
 
+    @DisplayName("Проверить что в обратной связи при выборе роли поставщика раздел горячая линия переходит на страницу X5Dialog")
     @Test
-    public void Otzyv() {
+    public void checkWhenChoosingTheSupplierHotlineRoleTest() {
         mainPage.openMainPageRu()
-                .acceptCookie()
-                .roleChoose();
-        feedBackPage.checkDialog();
+                .acceptCookie();
+        feedBackPage.roleChoose()
+                .dialog();
     }
 
-//    @Test
-//    public void Commercia() {
-//        mainPage.openMainPageRu()
-//                .acceptCookie()
-//                .roleChoose();
-//        feedBackPage.checkCommercia();
-//    }
-
+    @DisplayName("Проверить что в обратной связи при выборе роли жалоба диретору по безопасности сообщение успешно отправляется")
     @Test
-    public void Pokupka() {
+    public void checkComplaintToTheDirectorOfSecurityTest() {
         mainPage.openMainPageRu()
-                .acceptCookie()
-                .roleChoose();
-        feedBackPage.checkPokupka();
+                .acceptCookie();
+        feedBackPage.roleChoose()
+                .directorOfSecurity();
     }
 
+    @DisplayName("Проверить что в обратной связи при выборе роли покупателя и нажатии далее сообщение успешно отправляется")
     @Test
-    public void Linia() {
+    public void checkWhenChoosingTheBuyerRoleInTheFeedbackTest() {
         mainPage.openMainPageRu()
-                .acceptCookie()
-                .roleChoose();
-        feedBackPage.checkLinia();
+                .acceptCookie();
+        feedBackPage.roleChoose()
+                .buyer();
     }
 
+    @DisplayName("Проверить что в обратной связи при выборе прочие обращения и нажатии далее сообщение успешно отправляется")
     @Test
-    @DisplayName("Переход на страницу, Обращение на Горячую линию по этике")
-    public void Sotrudnik() {
+    public void checkTheOtherRequestsInTheFeedbackTest() {
         mainPage.openMainPageRu()
-                .acceptCookie()
-                .roleChoose();
-        //sotrudnikPage.checkSotrudnik();
+                .acceptCookie();
+        feedBackPage.roleChoose()
+                .otherRequests();
     }
 
     @DisplayName("Проверить что в обратной связи при выборе роли сотрудника и нажатии далее открылась страница Обращение на Горячую линию")
     @Test
     public void checkEmployeeRoleInFeedbackTest() {
-        mainPage.openMainPageRu();
-        $(byText("Принять")).click();
-        $(byText("Выберите роль")).click();
-        $(byText("Я сотрудник")).click();
-        $("#x5-form-22 > div.x5-form__submit > a").click();
-        switchTo().window(1);
-        $(".hlf-heder-text").shouldHave(Condition.text("Обращение на Горячую линию по этике"));
+        mainPage.openMainPageRu()
+                .acceptCookie();
+        feedBackPage.roleChoose()
+                .employee();
     }
 }

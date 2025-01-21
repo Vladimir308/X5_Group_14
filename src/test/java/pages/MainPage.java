@@ -90,10 +90,4 @@ public class MainPage {
         $(".hero-company__title").shouldHave(text("Press Center"));
         return this;
     }
-
-    @Step("Выбрать роль")
-    public MainPage roleChoose() {
-        $(byText("Выберите роль")).click();
-        return this;
-    }
 }
