@@ -12,7 +12,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static io.qameta.allure.Allure.step;
 
 @Tag("x5test")
-public class LaunchTests extends TestBase {
+public class TopMenuTests extends TestBase {
     @ValueSource(strings = {
             "Компания",
             "Покупателю",

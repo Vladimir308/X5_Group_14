@@ -15,7 +15,7 @@ import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
 @Tag("testX5")
-public class X5Tests extends TestBase {
+public class FeedbackTests extends TestBase {
 
     @EnumSource(Language.class)
     @ParameterizedTest(name = "{index}: Проверка навигации для языка {0}")
