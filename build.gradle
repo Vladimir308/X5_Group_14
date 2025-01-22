@@ -1,12 +1,12 @@
 plugins {
     id 'java-library'
-    id "io.qameta.allure" version '2.12.0'
+    id "io.qameta.allure" version '2.9.6'
 }
 
 def slf4jVersion = "2.0.16",
     junitVersion = "5.11.4",
     selenideVersion = "7.7.0",
-    allureVersion = "2.29.1",
+    allureVersion = "2.17.3",
     ownerVersion = "1.0.4",
     assertjCoreVersion = "3.27.3",
     webdrivermanagerVersion = "5.9.2",

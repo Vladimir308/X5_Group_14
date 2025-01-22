@@ -57,8 +57,11 @@ public class FeedbackTests extends TestBase {
     public void checkWhenChoosingTheSupplierHotlineRoleTest() {
         mainPage.openMainPageRu()
                 .acceptCookie();
-        feedBackPage.roleChoose()
-                .dialog();
+        feedBackPage.selectRoleChoose()
+                .selectProvider()
+                .chapter()
+                .selectHotLine()
+                .openDialog();
     }
 
     @DisplayName("Проверить что в обратной связи при выборе роли жалоба диретору по безопасности сообщение успешно отправляется")
@@ -66,8 +69,14 @@ public class FeedbackTests extends TestBase {
     public void checkComplaintToTheDirectorOfSecurityTest() {
         mainPage.openMainPageRu()
                 .acceptCookie();
-        feedBackPage.roleChoose()
-                .directorOfSecurity();
+        feedBackPage.selectRoleChoose()
+                .selectRequestDirector()
+                .enterUserDirector()
+                .enterEmailDirector()
+                .enterTelDirector()
+                .selectCityDirector()
+                .enterMessageDirector()
+                .checkMessageDirector();
     }
 
     @DisplayName("Проверить что в обратной связи при выборе роли покупателя и нажатии далее сообщение успешно отправляется")
@@ -75,8 +84,15 @@ public class FeedbackTests extends TestBase {
     public void checkWhenChoosingTheBuyerRoleInTheFeedbackTest() {
         mainPage.openMainPageRu()
                 .acceptCookie();
-        feedBackPage.roleChoose()
-                .buyer();
+        feedBackPage.selectRoleChoose()
+                .selectBuyer()
+                .selectRetailBuyer()
+                .enterLastNameBuyer()
+                .enterEmailBuyer()
+                .enterTelBuyer()
+                .selectCityBuyer()
+                .enterRequestBuyer()
+                .checkMessageBuyer();
     }
 
     @DisplayName("Проверить что в обратной связи при выборе прочие обращения и нажатии далее сообщение успешно отправляется")
@@ -84,8 +100,14 @@ public class FeedbackTests extends TestBase {
     public void checkTheOtherRequestsInTheFeedbackTest() {
         mainPage.openMainPageRu()
                 .acceptCookie();
-        feedBackPage.roleChoose()
-                .otherRequests();
+        feedBackPage.selectRoleChoose()
+                .selectRequestOther()
+                .enterUserOther()
+                .enterEmailOther()
+                .enterTelOther()
+                .selectCityOther()
+                .enterMessageOther()
+                .checkMessageOther();
     }
 
     @DisplayName("Проверить что в обратной связи при выборе роли сотрудника и нажатии далее открылась страница Обращение на Горячую линию")
@@ -93,7 +115,8 @@ public class FeedbackTests extends TestBase {
     public void checkEmployeeRoleInFeedbackTest() {
         mainPage.openMainPageRu()
                 .acceptCookie();
-        feedBackPage.roleChoose()
-                .staff();
+        feedBackPage.selectRoleChoose()
+                .selectStaff()
+                .switchingEthicsline();
     }
 }

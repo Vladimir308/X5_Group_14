@@ -50,70 +50,185 @@ public class FeedBackPage {
             popUpWindow = $(".hlf-heder-text"),
             complaintDirector = $("#react-select-2-option-6");
 
-    @Step("Переход на страницу Dialog")
-    public FeedBackPage staff() {
+    @Step("Выбрать жалоба директору по безопасности")
+    public FeedBackPage selectRequestDirector() {
+        complaintDirector.click();
+        return this;
+    }
+
+    @Step("Ввести фамилию имя отчество")
+    public FeedBackPage enterUserDirector() {
+        userNameDirector.setValue(data.user);
+        return this;
+    }
+
+    @Step("Ввести email")
+    public FeedBackPage enterEmailDirector() {
+        emailDirector.setValue(data.email);
+        return this;
+    }
+
+    @Step("Ввести телефон")
+    public FeedBackPage enterTelDirector() {
+        telDirector.setValue(data.numberPhone);
+        return this;
+    }
+
+    @Step("Выбрать город")
+    public FeedBackPage selectCityDirector() {
+        choosingCityDirector.setValue(data.city);
+        return this;
+    }
+
+    @Step("Ввести обращение и кликнуть отправить")
+    public FeedBackPage enterMessageDirector() {
+        messageDirector.setValue(data.city);
+        buttonDirector.click();
+        return this;
+    }
+
+    @Step("Проверить что сообщение успешно отправляется")
+    public FeedBackPage checkMessageDirector() {
+        messageSuccessfully.shouldBe(visible, Duration.ofSeconds(30)).shouldHave(exactText(data.successfullyMessage));
+        return this;
+    }
+
+    @Step("Выбрать прочие обращения")
+    public FeedBackPage selectRequestOther() {
+        requestOther.click();
+        return this;
+    }
+
+    @Step("Ввести фамилию имя отчество")
+    public FeedBackPage enterUserOther() {
+        userNameOther.setValue(data.user);
+        return this;
+    }
+
+    @Step("Ввести email")
+    public FeedBackPage enterEmailOther() {
+        emailRequests.setValue(data.email);
+        return this;
+    }
+
+    @Step("Ввести телефон")
+    public FeedBackPage enterTelOther() {
+        telOther.setValue(data.numberPhone);
+        return this;
+    }
+
+    @Step("Выбрать город")
+    public FeedBackPage selectCityOther() {
+        choosingCityOther.setValue(data.city);
+        return this;
+    }
+
+    @Step("Ввести обращение и кликнуть отправить")
+    public FeedBackPage enterMessageOther() {
+        messageOther.setValue(data.message);
+        buttonOther.click();
+        return this;
+    }
+
+    @Step("Проверить что сообщение успешно отправляется")
+    public FeedBackPage checkMessageOther() {
+        messageSuccessfully.shouldBe(visible, Duration.ofSeconds(30)).shouldHave(exactText(data.successfullyMessage));
+        return this;
+    }
+
+    @Step("Выбрать роль")
+    public FeedBackPage selectRoleChoose() {
+        choose.click();
+        return this;
+    }
+
+    @Step("Выбрать я сотрудник и нажать далее")
+    public FeedBackPage selectStaff() {
         employee.click();
         furtherButton.click();
+        return this;
+    }
+
+    @Step("Переход на горячую линию по этике")
+    public FeedBackPage switchingEthicsline() {
         switchTo().window(1);
         popUpWindow.shouldHave(Condition.text(data.contacting));
         return this;
     }
 
-    @Step("Переход на страницу Dialog")
-    public FeedBackPage dialog() {
+    @Step("выбрать я поставщик")
+    public FeedBackPage selectProvider() {
         provider.click();
+        return this;
+    }
+
+    @Step("кликнуть на раздел")
+    public FeedBackPage chapter() {
         chapter.click();
+        return this;
+    }
+
+    @Step("выбрать горячая линия и нажать далее")
+    public FeedBackPage selectHotLine() {
         hotLine.click();
         further.click();
+        return this;
+    }
+
+    @Step("Переход на страницу Dialog")
+    public FeedBackPage openDialog() {
         switchTo().window(1);
         open("https://dialog-sso.x5.ru/auth/realms/dialog/protocol/openid-connect/");
         header.shouldHave(Condition.text(data.dialog));
         return this;
     }
 
-    @Step("Переход на страницу Dialog")
-    public FeedBackPage buyer() {
+    @Step("выбрать я покупатель")
+    public FeedBackPage selectBuyer() {
         customer.click();
+        return this;
+    }
+
+    @Step("выбрать торговая сеть пятерочка")
+    public FeedBackPage selectRetailBuyer() {
         retailChain.click();
         shop.click();
+        return this;
+    }
+
+    @Step("Ввести фамилию имя отчество")
+    public FeedBackPage enterLastNameBuyer() {
         userNameBuyer.setValue(data.user);
+        return this;
+    }
+
+    @Step("Ввести email")
+    public FeedBackPage enterEmailBuyer() {
         emailBuyer.setValue(data.email);
+        return this;
+    }
+
+    @Step("Ввести телефон")
+    public FeedBackPage enterTelBuyer() {
         telBuyer.setValue(data.numberPhone);
+        return this;
+    }
+
+    @Step("Выбрать город")
+    public FeedBackPage selectCityBuyer() {
         choosingCityBuyer.setValue(data.city);
+        return this;
+    }
+
+    @Step("Ввести обращение и кликнуть отправить")
+    public FeedBackPage enterRequestBuyer() {
         messageBuyer.setValue(data.message);
         buttonBuyer.click();
-        messageSuccessfully.shouldBe(visible, Duration.ofSeconds(30)).shouldHave(exactText(data.successfullyMessage));
         return this;
     }
 
-    @Step("Проверить ")
-    public FeedBackPage otherRequests() {
-        requestOther.click();
-        userNameOther.setValue(data.user);
-        emailRequests.setValue(data.email);
-        telOther.setValue(data.numberPhone);
-        choosingCityOther.setValue(data.city);
-        messageOther.setValue(data.message);
-        buttonOther.click();
-        messageSuccessfully.shouldBe(visible, Duration.ofSeconds(30)).shouldHave(exactText(data.successfullyMessage));
-        return this;
-    }
-
-    @Step("Выбрать роль")
-    public FeedBackPage roleChoose() {
-        choose.click();
-        return this;
-    }
-
-    @Step("Переход на страницу Dialog")
-    public FeedBackPage directorOfSecurity() {
-        complaintDirector.click();
-        userNameDirector.setValue(data.user);
-        emailDirector.setValue(data.email);
-        telDirector.setValue(data.numberPhone);
-        choosingCityDirector.setValue(data.city);
-        messageDirector.setValue(data.city);
-        buttonDirector.click();
+    @Step("Проверить что сообщение успешно отправляется")
+    public FeedBackPage checkMessageBuyer() {
         messageSuccessfully.shouldBe(visible, Duration.ofSeconds(30)).shouldHave(exactText(data.successfullyMessage));
         return this;
     }
