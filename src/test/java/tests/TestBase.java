@@ -7,10 +7,7 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import pages.FeedBackPage;
-import pages.MainPage;
-import pages.TenChatPage;
-import pages.VkPage;
+import pages.*;
 import testdata.TestData;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;

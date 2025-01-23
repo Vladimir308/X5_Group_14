@@ -1,18 +1,21 @@
 package pages;
 
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import testdata.TestData;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class MainPage {
 
     Footer footer = new Footer();
     TestData data = new TestData();
+    private final ElementsCollection lang = $$(".header__lang");
     private final SelenideElement
             searchButton = $(".header-search__search-btn"),
             inputSearch = $("#search-term-header"),
@@ -23,6 +26,40 @@ public class MainPage {
             investors = $(byText("Investors")),
             pressCenter = $(byText("Press Centre")),
             resultsSearch = $(".search-results__term-hint");
+
+    public MainPage clickOnMenuItem(String menuItem) {
+        $(byText(menuItem)).shouldBe(Condition.visible).click();
+        return this;
+    }
+
+    public MainPage verifyBreadcrumbs(String expectedText) {
+        result.shouldHave(Condition.text(expectedText));
+        return this;
+    }
+
+    @Step("Открыть главную страницу")
+    public MainPage openPage(String url) {
+        open(url);
+        return this;
+    }
+
+    @Step("Открыть главную страницу")
+    public MainPage selectLanguage(String language) {
+        lang.find(text(language)).click();
+        return this;
+    }
+
+    @Step("Кликнуть на раздел: + description")
+    public MainPage clickOnSection(String description) {
+        $(byText(description)).shouldBe(visible).click();
+        return this;
+    }
+
+    @Step("Проверка совпадения для: + description")
+    public MainPage checkBreadcrumbs(String description) {
+        result.shouldHave(text(description));
+        return this;
+    }
 
     @Step("Принять соглашение Cookie")
     public MainPage acceptCookie() {

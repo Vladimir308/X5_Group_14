@@ -1,18 +1,14 @@
 package tests;
 
-import com.codeborne.selenide.Condition;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static io.qameta.allure.Allure.step;
-
 @Tag("x5test")
-public class TopMenuTests extends TestBase {
+public class topMenuTests extends TestBase {
+
     @ValueSource(strings = {
             "Компания",
             "Покупателю",
@@ -21,18 +17,11 @@ public class TopMenuTests extends TestBase {
     })
     @ParameterizedTest(name = "{index}: {0}")
     @DisplayName("Проверка разделов верхнего меню")
-    public void checkTheTopMenuTest(String value) {
-        step("Открыть главную страницу X5Group", () -> {
-            mainPage.openMainPageRu()
-                    .acceptCookie();
-            step("Кликнуть", () -> {
-                $(".header__nav-link");
-                $(byText(value)).click();
-            });
-            step("Проверка открытия раздела", () -> {
-                $("[aria-label='breadcrumbs']").shouldHave(Condition.text(value));
-            });
-        });
+    public void checkTheTopMenuTest(String menuItem) {
+        mainPage.openMainPageRu()
+                .acceptCookie()
+                .clickOnMenuItem(menuItem)
+                .verifyBreadcrumbs(menuItem);
     }
 
     @Test
