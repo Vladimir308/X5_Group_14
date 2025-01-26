@@ -20,7 +20,7 @@ public interface WebConfig extends Config {
     String getBrowserSize();
 
     @Key("browserVersion")
-    @DefaultValue("126.0")
+    @DefaultValue("132.0")
     String getBrowserVersion();
 
     @Key("selenoidUser")
