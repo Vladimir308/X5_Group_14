@@ -21,8 +21,6 @@ public class MainPage {
             inputSearch = $("#search-term-header"),
             result = $("[aria-label='breadcrumbs']"),
             accept = $(byText("Принять")),
-            partner = $(byText("Партнёрам")),
-            investor = $(byText("Акционерам и инвесторам")),
             investors = $(byText("Investors")),
             pressCenter = $(byText("Press Centre")),
             vk = $(byText("VK")),
@@ -94,24 +92,10 @@ public class MainPage {
         return this;
     }
 
-    @Step("Проверка адреса")
-    public MainPage checkPartners() {
-        partner.click();
-        result.shouldHave(text(data.partner));
-        return this;
-    }
-
     @Step("Вводим X5 Import")
-    public MainPage enterImport() {
+    public MainPage setSearchField() {
         searchButton.click();
         inputSearch.setValue(data.port).pressEnter();
-        return this;
-    }
-
-    @Step("Проверка раздела Investors")
-    public MainPage checkInvestors() {
-        investor.click();
-        result.shouldHave(text(data.invest));
         return this;
     }
 

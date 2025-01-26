@@ -54,28 +54,12 @@ public class TopMenuTests extends TestBase {
     }
 
     @Test
-    @DisplayName("Несоответствие заголовка страницы")
-    public void negativeNavigationTest() {
-        mainPage.openMainPageRu()
-                .acceptCookie()
-                .checkPartners();
-    }
-
-    @Test
-    @DisplayName("Несоответствие заголовка страницы")
-    public void negativesNavigationTest() {
-        mainPage.openMainPageRu()
-                .acceptCookie()
-                .checkInvestors();
-    }
-
-    @Test
     @DisplayName("Проверка поиска")
-    public void checkingTheImportStatusTest() {
+    public void checkSearchTest() {
         mainPage.openMainPageRu()
                 .acceptCookie()
-                .enterImport();
-        searchResultPage.resultImport();
+                .setSearchField();
+        searchResultPage.checkThatResultHaveQuerry();
     }
 
     @Test

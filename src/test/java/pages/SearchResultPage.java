@@ -14,7 +14,7 @@ public class SearchResultPage {
     private final SelenideElement resultsSearch = $(".search-results__term-hint");
 
     @Step("результат X5 Import")
-    public SearchResultPage resultImport() {
+    public SearchResultPage checkThatResultHaveQuerry() {
         resultsSearch.shouldHave(text(data.port));
         return this;
     }

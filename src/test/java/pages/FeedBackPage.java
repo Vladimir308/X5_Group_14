@@ -80,7 +80,7 @@ public class FeedBackPage {
 
     @Step("Ввести обращение")
     public FeedBackPage enterMessageDirector() {
-        messageDirector.setValue(data.city);
+        messageDirector.setValue(data.message);
         return this;
     }
 

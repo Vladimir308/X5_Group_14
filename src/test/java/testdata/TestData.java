@@ -12,9 +12,7 @@ public class TestData {
             city = "Moscow",
             message = "Люблю X5 Group",
             successfullyMessage = "Сообщение успешно отправлено!",
-            partner = "Партнерам",
             port = "X5 Import",
-            invest = "Инвесторам",
             relations = "Investor Relations",
             center = "Press Center";
 }
