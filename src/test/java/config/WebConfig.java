@@ -8,7 +8,7 @@ import org.aeonbits.owner.Config;
 
 public interface WebConfig extends Config {
     @Key("baseUrl")
-    @DefaultValue("https://www.x5.ru/ru/")
+    @DefaultValue("https://www.x5.ru")
     String getBaseUrl();
 
     @Key("browserName")
