@@ -65,13 +65,18 @@ test {
     }
 }
 
-tasks.register('for_x5_test', Test) {
+tasks.register('Top_Menu_Test', Test) {
     useJUnitPlatform {
-        includeTags("x5test")
+        includeTags("TopMenuTest")
     }
 }
-tasks.register('for_test_X5', Test) {
+tasks.register('Feed_back_Test', Test) {
     useJUnitPlatform {
-        includeTags("testX5")
+        includeTags("FeedbackTest")
+    }
+}
+tasks.register('Contacts_Test', Test) {
+    useJUnitPlatform {
+        includeTags("ContactsTest")
     }
 }

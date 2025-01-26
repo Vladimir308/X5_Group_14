@@ -8,7 +8,8 @@ import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import testdata.Language;
 
-@Tag("x5test")
+@Tag("TopMenuTest")
+@DisplayName("Проверка открытия верхнего меню")
 public class TopMenuTests extends TestBase {
 
     @EnumSource(Language.class)
@@ -22,20 +23,6 @@ public class TopMenuTests extends TestBase {
             mainPage.clickOnSection(description)
                     .checkBreadcrumbs(description);
         }
-    }
-
-    @DisplayName("Проверить что при нажатии на Investors отображается Investor Relations")
-    @Test
-    public void checkTheTopMenuInvestorTest() {
-        mainPage.openMainPageEn()
-                .checkInvestor();
-    }
-
-    @DisplayName("Проверить что при нажатии на Press Centre отображается Press center")
-    @Test
-    public void checkTheTopMenuPressCenterTest() {
-        mainPage.openMainPageEn()
-                .checkPressCentre();
     }
 
     @ValueSource(strings = {
@@ -53,47 +40,27 @@ public class TopMenuTests extends TestBase {
                 .verifyBreadcrumbs(menuItem);
     }
 
+    @DisplayName("Проверить что при нажатии на Investors отображается Investor Relations")
+    @Test
+    public void checkTheTopMenuInvestorTest() {
+        mainPage.openMainPageEn()
+                .checkInvestor();
+    }
+
+    @DisplayName("Проверить что при нажатии на Press Centre отображается Press center")
+    @Test
+    public void checkTheTopMenuPressCenterTest() {
+        mainPage.openMainPageEn()
+                .checkPressCentre();
+    }
+
     @Test
     @DisplayName("Проверка поиска")
     public void checkSearchTest() {
+        String query = "X5 Import";
         mainPage.openMainPageRu()
                 .acceptCookie()
-                .setSearchField();
-        searchResultPage.checkThatResultHaveQuerry();
-    }
-
-    @Test
-    @DisplayName("Проверка адреса")
-    public void verifyAddressTest() {
-        mainPage.openMainPageRu()
-                .acceptCookie()
-                .checkAddress(testData.address);
-    }
-
-    @Test
-    @DisplayName("Проверка номеров телефона")
-    public void verifyPhoneNumberTest() {
-        mainPage.openMainPageRu()
-                .acceptCookie()
-                .checkPhone(testData.phoneNumber_1)
-                .checkPhone(testData.phoneNumber_2);
-    }
-
-    @Test
-    @DisplayName("Проверка перехода на страницу X5 VK")
-    public void checkX5VkTest() {
-        mainPage.openMainPageRu()
-                .acceptCookie()
-                .clickVK();
-        vkPage.goingToThePageVK();
-    }
-
-    @Test
-    @DisplayName("Проверка перехода на страницу TenChat")
-    public void checkTenChatTest() {
-        mainPage.openMainPageRu()
-                .acceptCookie()
-                .clickTen();
-        tenChatPage.goingTenChat();
+                .setSearchField(query);
+        searchResultPage.checkThatResultHaveQuerry(query);
     }
 }

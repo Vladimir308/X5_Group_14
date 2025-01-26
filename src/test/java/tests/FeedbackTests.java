@@ -4,7 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-@Tag("testX5")
+@Tag("FeedbackTest")
+@DisplayName("Проверка функционала обратной связи")
 public class FeedbackTests extends TestBase {
 
     @DisplayName("Проверить что в обратной связи при выборе роли поставщика раздел горячая линия переходит на страницу X5Dialog")

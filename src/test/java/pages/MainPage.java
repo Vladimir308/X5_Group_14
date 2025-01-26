@@ -93,9 +93,9 @@ public class MainPage {
     }
 
     @Step("Вводим X5 Import")
-    public MainPage setSearchField() {
+    public MainPage setSearchField(String query) {
         searchButton.click();
-        inputSearch.setValue(data.port).pressEnter();
+        inputSearch.setValue(query).pressEnter();
         return this;
     }
 
