@@ -3,39 +3,9 @@ package tests;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.EnumSource;
-import testdata.Language;
 
 @Tag("testX5")
 public class FeedbackTests extends TestBase {
-
-    @EnumSource(Language.class)
-    @ParameterizedTest(name = "{index}: Проверка навигации для языка {0}")
-    @DisplayName("Проверка верхнего меню на разных языках")
-    public void checkTheTopMenuInDifferentLanguagesTest(Language language) {
-        String url = language == Language.RU ? "https://www.x5.ru/en/" : "https://www.x5.ru/ru/";
-        mainPage.openPage(url)
-                .selectLanguage(language.name());
-        for (String description : language.descriptions) {
-            mainPage.clickOnSection(description)
-                    .checkBreadcrumbs(description);
-        }
-    }
-
-    @DisplayName("Проверить что при нажатии на Investors отображается Investor Relations")
-    @Test
-    public void checkTheTopMenuInvestorTest() {
-        mainPage.openMainPageEn()
-                .checkInvestor();
-    }
-
-    @DisplayName("Проверить что при нажатии на Press Centre отображается Press center")
-    @Test
-    public void checkTheTopMenuPressCenterTest() {
-        mainPage.openMainPageEn()
-                .checkPressCentre();
-    }
 
     @DisplayName("Проверить что в обратной связи при выборе роли поставщика раздел горячая линия переходит на страницу X5Dialog")
     @Test
@@ -44,12 +14,13 @@ public class FeedbackTests extends TestBase {
                 .acceptCookie();
         feedBackPage.selectRoleChoose()
                 .selectProvider()
-                .chapter()
+                .selectChapter()
                 .selectHotLine()
-                .openDialog();
+                .selectClickLine();
+        dialogPage.checkThatDialogPageOpened();
     }
 
-    @DisplayName("Проверить что в обратной связи при выборе роли жалоба диретору по безопасности сообщение успешно отправляется")
+    @DisplayName("Проверить что в обратной связи при выборе роли жалоба директору по безопасности сообщение успешно отправляется")
     @Test
     public void checkComplaintToTheDirectorOfSecurityTest() {
         mainPage.openMainPageRu()
@@ -61,7 +32,8 @@ public class FeedbackTests extends TestBase {
                 .enterTelDirector()
                 .selectCityDirector()
                 .enterMessageDirector()
-                .checkMessageDirector();
+                .clickSendDirector()
+                .сheckThatMessageSuccessfulySent();
     }
 
     @DisplayName("Проверить что в обратной связи при выборе роли покупателя и нажатии далее сообщение успешно отправляется")
@@ -77,7 +49,8 @@ public class FeedbackTests extends TestBase {
                 .enterTelBuyer()
                 .selectCityBuyer()
                 .enterRequestBuyer()
-                .checkMessageBuyer();
+                .clickSendBuyer()
+                .сheckThatMessageSuccessfulySent();
     }
 
     @DisplayName("Проверить что в обратной связи при выборе прочие обращения и нажатии далее сообщение успешно отправляется")
@@ -92,7 +65,8 @@ public class FeedbackTests extends TestBase {
                 .enterTelOther()
                 .selectCityOther()
                 .enterMessageOther()
-                .checkMessageOther();
+                .clickSendOther()
+                .сheckThatMessageSuccessfulySent();
     }
 
     @DisplayName("Проверить что в обратной связи при выборе роли сотрудника и нажатии далее открылась страница Обращение на Горячую линию")
@@ -101,7 +75,7 @@ public class FeedbackTests extends TestBase {
         mainPage.openMainPageRu()
                 .acceptCookie();
         feedBackPage.selectRoleChoose()
-                .selectStaff()
-                .switchingEthicsline();
+                .selectStaff();
+        hotLinePage.checkThatHotLInePageOpened();
     }
 }

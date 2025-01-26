@@ -4,10 +4,39 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import testdata.Language;
 
 @Tag("x5test")
-public class topMenuTests extends TestBase {
+public class TopMenuTests extends TestBase {
+
+    @EnumSource(Language.class)
+    @ParameterizedTest(name = "{index}: Проверка навигации для языка {0}")
+    @DisplayName("Проверка верхнего меню на разных языках")
+    public void checkTheTopMenuInDifferentLanguagesTest(Language language) {
+        String url = language == Language.RU ? "https://www.x5.ru/en/" : "https://www.x5.ru/ru/";
+        mainPage.openPage(url)
+                .selectLanguage(language.name());
+        for (String description : language.descriptions) {
+            mainPage.clickOnSection(description)
+                    .checkBreadcrumbs(description);
+        }
+    }
+
+    @DisplayName("Проверить что при нажатии на Investors отображается Investor Relations")
+    @Test
+    public void checkTheTopMenuInvestorTest() {
+        mainPage.openMainPageEn()
+                .checkInvestor();
+    }
+
+    @DisplayName("Проверить что при нажатии на Press Centre отображается Press center")
+    @Test
+    public void checkTheTopMenuPressCenterTest() {
+        mainPage.openMainPageEn()
+                .checkPressCentre();
+    }
 
     @ValueSource(strings = {
             "Компания",
@@ -41,11 +70,12 @@ public class topMenuTests extends TestBase {
     }
 
     @Test
-    @DisplayName("Проверка перехода на страницу импорта")
-    public void checkMainPageOpenTest() {
+    @DisplayName("Проверка поиска")
+    public void checkingTheImportStatusTest() {
         mainPage.openMainPageRu()
                 .acceptCookie()
-                .checkImport();
+                .enterImport();
+        searchResultPage.resultImport();
     }
 
     @Test
@@ -69,15 +99,17 @@ public class topMenuTests extends TestBase {
     @DisplayName("Проверка перехода на страницу X5 VK")
     public void checkX5VkTest() {
         mainPage.openMainPageRu()
-                .acceptCookie();
-        vkPage.checkVK();
+                .acceptCookie()
+                .clickVK();
+        vkPage.goingToThePageVK();
     }
 
     @Test
     @DisplayName("Проверка перехода на страницу TenChat")
     public void checkTenChatTest() {
         mainPage.openMainPageRu()
-                .acceptCookie();
-        tenChatPage.checkTen();
+                .acceptCookie()
+                .clickTen();
+        tenChatPage.goingTenChat();
     }
 }

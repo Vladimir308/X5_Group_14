@@ -44,10 +44,8 @@ public class FeedBackPage {
             chapter = $(byText("Раздел")),
             hotLine = $(byText("Горячая линия")),
             further = $(byText("Далее")),
-            header = $(".content-header"),
             employee = $(byText("Я сотрудник")),
             furtherButton = $("#x5-form-22 > div.x5-form__submit > a"),
-            popUpWindow = $(".hlf-heder-text"),
             complaintDirector = $("#react-select-2-option-6");
 
     @Step("Выбрать жалоба директору по безопасности")
@@ -80,15 +78,20 @@ public class FeedBackPage {
         return this;
     }
 
-    @Step("Ввести обращение и кликнуть отправить")
+    @Step("Ввести обращение")
     public FeedBackPage enterMessageDirector() {
         messageDirector.setValue(data.city);
+        return this;
+    }
+
+    @Step("Кликнуть отправить")
+    public FeedBackPage clickSendDirector() {
         buttonDirector.click();
         return this;
     }
 
     @Step("Проверить что сообщение успешно отправляется")
-    public FeedBackPage checkMessageDirector() {
+    public FeedBackPage сheckThatMessageSuccessfulySent() {
         messageSuccessfully.shouldBe(visible, Duration.ofSeconds(30)).shouldHave(exactText(data.successfullyMessage));
         return this;
     }
@@ -123,16 +126,15 @@ public class FeedBackPage {
         return this;
     }
 
-    @Step("Ввести обращение и кликнуть отправить")
+    @Step("Ввести обращение")
     public FeedBackPage enterMessageOther() {
         messageOther.setValue(data.message);
-        buttonOther.click();
         return this;
     }
 
-    @Step("Проверить что сообщение успешно отправляется")
-    public FeedBackPage checkMessageOther() {
-        messageSuccessfully.shouldBe(visible, Duration.ofSeconds(30)).shouldHave(exactText(data.successfullyMessage));
+    @Step("Кликнуть отправить")
+    public FeedBackPage clickSendOther() {
+        buttonOther.click();
         return this;
     }
 
@@ -149,47 +151,38 @@ public class FeedBackPage {
         return this;
     }
 
-    @Step("Переход на горячую линию по этике")
-    public FeedBackPage switchingEthicsline() {
-        switchTo().window(1);
-        popUpWindow.shouldHave(Condition.text(data.contacting));
-        return this;
-    }
-
-    @Step("выбрать я поставщик")
+    @Step("Выбрать я поставщик")
     public FeedBackPage selectProvider() {
         provider.click();
         return this;
     }
 
-    @Step("кликнуть на раздел")
-    public FeedBackPage chapter() {
+    @Step("Кликнуть на раздел")
+    public FeedBackPage selectChapter() {
         chapter.click();
         return this;
     }
 
-    @Step("выбрать горячая линия и нажать далее")
+    @Step("Выбрать горячая линия")
     public FeedBackPage selectHotLine() {
         hotLine.click();
         further.click();
         return this;
     }
 
-    @Step("Переход на страницу Dialog")
-    public FeedBackPage openDialog() {
-        switchTo().window(1);
-        open("https://dialog-sso.x5.ru/auth/realms/dialog/protocol/openid-connect/");
-        header.shouldHave(Condition.text(data.dialog));
+    @Step("Нажать далее")
+    public FeedBackPage selectClickLine() {
+        further.click();
         return this;
     }
 
-    @Step("выбрать я покупатель")
+    @Step("Выбрать я покупатель")
     public FeedBackPage selectBuyer() {
         customer.click();
         return this;
     }
 
-    @Step("выбрать торговая сеть пятерочка")
+    @Step("Выбрать торговая сеть пятерочка")
     public FeedBackPage selectRetailBuyer() {
         retailChain.click();
         shop.click();
@@ -220,16 +213,15 @@ public class FeedBackPage {
         return this;
     }
 
-    @Step("Ввести обращение и кликнуть отправить")
+    @Step("Ввести обращение")
     public FeedBackPage enterRequestBuyer() {
         messageBuyer.setValue(data.message);
-        buttonBuyer.click();
         return this;
     }
 
-    @Step("Проверить что сообщение успешно отправляется")
-    public FeedBackPage checkMessageBuyer() {
-        messageSuccessfully.shouldBe(visible, Duration.ofSeconds(30)).shouldHave(exactText(data.successfullyMessage));
+    @Step("Кликнуть отправить")
+    public FeedBackPage clickSendBuyer() {
+        buttonBuyer.click();
         return this;
     }
 }

@@ -32,7 +32,6 @@ public class WebDriverProvider {
                 throw new RuntimeException("No such driver: + " + config.getBrowserName());
         }
 
-        Configuration.baseUrl = config.getBaseUrl();
         Configuration.browserVersion = config.getBrowserVersion();
         Configuration.browserSize = config.getBrowserSize();
         String remoteUrl = config.getRemoteUrl();

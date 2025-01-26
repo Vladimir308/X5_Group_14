@@ -1,17 +1,18 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 
 public class TenChatPage {
+
+    private final SelenideElement TenChat = $(".truncate");
+
     @Step("Переход на страницу TenChat")
-    public TenChatPage checkTen() {
-        $("#menu-item-46848").click();
-        open("https://tenchat.ru/x5group");
-        $(".truncate").shouldHave(Condition.text("Group"));
+    public TenChatPage goingTenChat() {
+        TenChat.shouldHave(Condition.text("Group"));
         return this;
     }
 }

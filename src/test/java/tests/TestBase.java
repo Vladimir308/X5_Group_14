@@ -19,6 +19,9 @@ public abstract class TestBase {
     VkPage vkPage = new VkPage();
     TenChatPage tenChatPage = new TenChatPage();
     FeedBackPage feedBackPage = new FeedBackPage();
+    DialogPage dialogPage = new DialogPage();
+    HotLinePage hotLinePage = new HotLinePage();
+    SearchResultPage searchResultPage = new SearchResultPage();
 
     private static final WebDriverProvider driver = new WebDriverProvider();
 

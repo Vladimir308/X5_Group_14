@@ -1,18 +1,19 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class VkPage {
+
+    private final SelenideElement pageName = $(".page_name");
+
     @Step("Переход на страницу VK")
-    public VkPage checkVK() {
-        $(byText("VK")).click();
+    public VkPage goingToThePageVK() {
         switchTo().window(1);
-        open("https://vk.com/x5group");
-        $(".page_name").shouldHave(Condition.text("X5 Group"));
+        pageName.shouldHave(Condition.text("X5 Group"));
         return this;
     }
 }

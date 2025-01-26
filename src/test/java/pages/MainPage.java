@@ -25,13 +25,16 @@ public class MainPage {
             investor = $(byText("Акционерам и инвесторам")),
             investors = $(byText("Investors")),
             pressCenter = $(byText("Press Centre")),
-            resultsSearch = $(".search-results__term-hint");
+            vk = $(byText("VK")),
+            tenChat = $("#menu-item-46848");
 
+    @Step("Кликнуть на элемент верхнего меню")
     public MainPage clickOnMenuItem(String menuItem) {
         $(byText(menuItem)).shouldBe(Condition.visible).click();
         return this;
     }
 
+    @Step("Виден элемент верхнего меню")
     public MainPage verifyBreadcrumbs(String expectedText) {
         result.shouldHave(Condition.text(expectedText));
         return this;
@@ -98,11 +101,10 @@ public class MainPage {
         return this;
     }
 
-    @Step("Проверка раздела Import")
-    public MainPage checkImport() {
+    @Step("Вводим X5 Import")
+    public MainPage enterImport() {
         searchButton.click();
         inputSearch.setValue(data.port).pressEnter();
-        resultsSearch.shouldHave(text(data.port));
         return this;
     }
 
@@ -124,6 +126,18 @@ public class MainPage {
     public MainPage checkPressCentre() {
         pressCenter.click();
         result.shouldHave(text(data.center));
+        return this;
+    }
+
+    @Step("Кликнуть на VK")
+    public MainPage clickVK() {
+        vk.click();
+        return this;
+    }
+
+    @Step("Кликнуть на TenChat")
+    public MainPage clickTen() {
+        tenChat.click();
         return this;
     }
 }
