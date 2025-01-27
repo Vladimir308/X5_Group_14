@@ -155,7 +155,7 @@ ${TASK}
 #### Графики
 
 <p align="center">
-<img width="100%" title="AllureReportGraphics" src="media/screenshots/Allure Report Graphics.png.png">
+<img width="100%" title="AllureReportGraphics" src="media/screenshots/Allure Report Graphics.png">
 </p>
 
 </details>
