@@ -5,7 +5,7 @@
 ## ☑️ Содержание:
 
 - Использованные технологии и инструменты
-    - Список реализованных тестов 
+    - Список реализованных тестов
     - Содержание Allure Report
 - Запуск автотестов
     - Запуск тестов из терминала
@@ -18,10 +18,12 @@
 ****
 
 ## ☑️ Использованные технологии и инструменты
+
     - Сборки
+
 - Визуализация
-  - Сборка в Jenkins
-  - Пример Allure Report
+    - Сборка в Jenkins
+    - Пример Allure Report
 
 <p align="center">
 <a href="https://www.jetbrains.com/idea/"><img width="7%" title="IntelliJ IDEA" src="media/logo/IntelliJ_IDEA.png"></a>
@@ -49,8 +51,24 @@
 
 ### Список реализованных тестов:
 
-
-
+- Проверка переходов на страницы в социальных сетях, адреса и номера телефонов;
+- Проверка адреса;
+- Проверка номеров телефона;
+- Проверка перехода на страницу X5 VK;
+- Проверка перехода на страницу TenChat;
+- Проверка функционала обратной связи;
+- Проверить что в обратной связи при выборе роли поставщика раздел горячая линия переходит на страницу X5Dialog;
+- Проверить что в обратной связи при выборе роли жалоба директору по безопасности сообщение успешно отправляется;
+- Проверить что в обратной связи при выборе роли покупателя и нажатии далее сообщение успешно отправляется;
+- Проверить что в обратной связи при выборе прочие обращения и нажатии далее сообщение успешно отправляется;
+- Проверить что в обратной связи при выборе роли сотрудника и нажатии далее открылась страница Обращение на Горячую
+  линию;
+- Проверка открытия верхнего меню;
+- Проверка верхнего меню на разных языках;
+- Проверка разделов верхнего меню;
+- Проверить что при нажатии на Investors отображается Investor Relations;
+- Проверить что при нажатии на Press Centre отображается Press center;
+- Проверка поиска;
 
 ### Содержание Allure Report:
 
@@ -67,13 +85,17 @@
 ### Запуск тестов из терминала
 
 ```bash
-./gradlew clean for_x5_test -Denv=local
+gradle clean Contacts_Test -Denv=local
+gradle clean Feed_back_Test -Denv=local
+gradle clean Top_Menu_Test -Denv=local
 ```
 
 ### Запуск тестов из терминала на удаленном браузере
 
 ```bash
-./gradlew clean for_x5_test -Denv=remote
+gradle clean Contacts_Test -Denv=remote
+gradle clean Feed_back_Test -Denv=remote
+gradle clean Top_Menu_Test -Denv=remote
 ```
 
 ### Запуск тестов на удаленном браузере
@@ -85,7 +107,7 @@ ${TASK}
 -Dbrowser=${BROWSER}
 -DbrowserSize=${BROWSER_SIZE}
 -DbrowserVersion=${BROWSER_VERSION}
--DremoteUrl=${REMOTE}
+-DremoteUrl=https://${LOGIN}:${PASSWORD}@${SELENOID_URL}/wd/hub
 ```
 
 ### Параметры сборки:
@@ -94,18 +116,21 @@ ${TASK}
 - BROWSER (браузер, по умолчанию chrome)
 - VERSION (версия браузера, по умолчанию 126.0)
 - BROWSER_SIZE (размер окна браузера, по умолчанию 1920x1080)
-- TASK (набор кейсов для запуска, по умолчанию for_x5_test)
+- TASK (набор кейсов для запуска)
 - BRANCH (ветка, на которой надо запустить тесты, по умолчанию main)
 
 ****
 
 ## Сборки:
 
-- <a id="jenkins"></a> <img alt="Jenkins" height="25" src="media/logo/Jenkins.png" width="25"/></a><a name="Сборка"></a>Сборка в [Jenkins](https://jenkins.autotests.cloud/job/X5_Group_14/)</a>
+- <a id="jenkins"></a> <img alt="Jenkins" height="25" src="media/logo/Jenkins.png" width="25"/></a><a name="Сборка"></a>
+  Сборка в [Jenkins](https://jenkins.autotests.cloud/job/X5_Group_14/)</a>
 
-- <a id="Allure"></a> <img alt="Allure" height="25" src="media/logo/AllureReports.png" width="25"/></a><a name="Сборка"></a>Сборка в [Allure](https://jenkins.autotests.cloud/job/X5_Group_14/19/allure/)</a>
+- <a id="Allure"></a> <img alt="Allure" height="25" src="media/logo/AllureReports.png" width="25"/></a><a name="Сборка"></a>
+  Сборка в [Allure](https://jenkins.autotests.cloud/job/X5_Group_14/allure/)</a>
 
-- <a id="Allure TestOps"></a> <img alt="Allure TestOps" height="25" src="media/logo/AllureTestOps.svg" width="25"/></a><a name="Сборка"></a>Сборка в [Allure TestOps](https://allure.autotests.cloud/project/1367/test-cases?treeId=0)</a>
+- <a id="Allure TestOps"></a> <img alt="Allure TestOps" height="25" src="media/logo/AllureTestOps.svg" width="25"/></a><a name="Сборка"></a>
+  Сборка в [Allure TestOps](https://allure.autotests.cloud/launch/44233)</a>
 
 ****
 
@@ -132,6 +157,12 @@ ${TASK}
 
 <p align="center">
 <img width="100%" title="AllureReport" src="media/screenshots/Allure Report.png"> 
+</p>
+
+#### Графики
+
+<p align="center">
+<img width="100%" title="AllureReportPreview" src="media/screenshots/Allure Report Graphics.png.png">
 </p>
 
 </details>

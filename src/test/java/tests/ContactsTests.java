@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 @Tag("ContactsTest")
-@DisplayName("Проверка переходов на страницы в соц.сетях, адреса и номера телефонов")
+@DisplayName("Проверка переходов на страницы в социальных сетях, адреса и номера телефонов")
 public class ContactsTests extends TestBase {
 
     @Test
