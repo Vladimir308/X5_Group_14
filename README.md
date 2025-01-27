@@ -17,13 +17,6 @@
 
 ****
 
-    - Сборки
-
-- Визуализация
-  - Сборка в Jenkins
-  - Пример Allure Report
-
-
 ## ☑️ Использованные технологии и инструменты
 <p align="center">
 <a href="https://www.jetbrains.com/idea/"><img width="7%" title="IntelliJ IDEA" src="media/logo/IntelliJ_IDEA.png"></a>
