@@ -78,6 +78,7 @@
 ### Запуск тестов из терминала
 
 ```bash
+gradle clean test
 gradle clean Contacts_Test -Denv=local
 gradle clean Feed_back_Test -Denv=local
 gradle clean Top_Menu_Test -Denv=local
@@ -86,6 +87,7 @@ gradle clean Top_Menu_Test -Denv=local
 ### Запуск тестов из терминала на удаленном браузере
 
 ```bash
+gradle clean test
 gradle clean Contacts_Test -Denv=remote
 gradle clean Feed_back_Test -Denv=remote
 gradle clean Top_Menu_Test -Denv=remote
